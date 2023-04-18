@@ -60,10 +60,12 @@ public class onClick : MonoBehaviour
         if (bAst == Boom)
         {
             Debug.Log("You hit the asteroid!");
+            ScoreSystem.scoreSystem.correct();
         }
         else
         {
             Debug.Log("Missed the asteroid!");
+            ScoreSystem.scoreSystem.incorrect();
         }
 
 
