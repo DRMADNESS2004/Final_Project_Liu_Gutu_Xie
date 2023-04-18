@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -36,8 +37,15 @@ public class ScoreSystem : MonoBehaviour
 
     public void correct()
     {
-        score++;
+        if (score <= 20)
+        {
+            score++;
+        }
         scoretxt.text = score.ToString();
+        if(score == 20)
+        {
+            //activate win screen
+        }
 
     }
 
@@ -47,6 +55,19 @@ public class ScoreSystem : MonoBehaviour
         {
             lives--;
         }
+        if(lives == 0)
+        {
+            //activate lost screen
+        }
         livestxt.text = lives.ToString();
     }
+
+   
+
+    public void Reset()
+    {
+        score = 0;
+        lives = 3;
+    }
+
 }
