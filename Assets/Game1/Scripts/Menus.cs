@@ -25,6 +25,13 @@ public class Menus : MonoBehaviour
     [SerializeField]
     private GameObject victoryCanvas;
 
+    public TMP_Text livestxt;
+
+    [SerializeField]
+    private bool isLost = false;
+    [SerializeField]
+    private GameObject DefeatCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,15 +62,15 @@ public class Menus : MonoBehaviour
                 PauseMe();
             }
         }
-
+        //victory
         int boom = Convert.ToInt32(mTxt.text);
-        int Boom = int.Parse(boom.ToString());
-        if(Boom == 20)
+        
+        if(boom == 20)
         {
             isWon = true;
         }
 
-        //victory
+        
         if (isWon)
         {
             Won();
@@ -73,6 +80,21 @@ public class Menus : MonoBehaviour
             NotWon();
         }
 
+        //defeat
+        int life = Convert.ToInt32(livestxt.text);
+        if(life == 0)
+        {
+            isLost = true;
+        }
+
+        if (isLost)
+        {
+            Lost();
+        }
+        if (!isLost)
+        {
+            NotLost();
+        }
 
 
     }
@@ -110,7 +132,12 @@ public class Menus : MonoBehaviour
     {
         NotStarted();
         ScoreSystem.scoreSystem.Reset();
-        NotWon();
+        mTxt.text = "0";
+        livestxt.text = "3";
+        //NotWon();   
+        //NotLost();
+        isLost = false;
+        isWon = false;
     }
 
     public void exit()
@@ -131,5 +158,19 @@ public class Menus : MonoBehaviour
         Time.timeScale = 1;
         victoryCanvas.SetActive(false);
         isWon = false;
+    }
+
+    public void Lost()
+    {
+        Time.timeScale = 0;
+        DefeatCanvas.SetActive(true);
+        isLost = true;
+    }
+
+    public void NotLost()
+    {
+        Time.timeScale = 1;
+        DefeatCanvas.SetActive(false);
+        isLost = false;
     }
 }

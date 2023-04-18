@@ -15,10 +15,14 @@ public class onClick : MonoBehaviour
     [SerializeField]
     private TMP_Text mTxt;
 
+    public static NbrGenerator n;
+
+    private bool correct = false;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        generateNewQ();
     }
 
     // Update is called once per frame
@@ -60,7 +64,15 @@ public class onClick : MonoBehaviour
         if (bAst == Boom)
         {
             Debug.Log("You hit the asteroid!");
-            ScoreSystem.scoreSystem.correct();
+            //prevents spam answering to cheat points as well as spam generating new questions
+            if (!correct)
+            {
+                ScoreSystem.scoreSystem.correct();
+                correct = true;
+                Invoke("generateNewQ", 2);
+            }
+            
+            
         }
         else
         {
@@ -71,5 +83,18 @@ public class onClick : MonoBehaviour
 
     }
 
+    private void generateNewQ()
+    {
+        NbrGenerator nbrGen = FindObjectOfType<NbrGenerator>();
+        if (nbrGen!=null)
+        {
+            nbrGen.assignRandom();
+            correct = false;
+        }
+        else
+        {
+            Debug.LogError("NbrGenerator not found");
+        }
+    }
 
 }
