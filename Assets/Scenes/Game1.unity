@@ -5212,6 +5212,9 @@ MonoBehaviour:
   mTxt: {fileID: 152266443}
   isWon: 0
   victoryCanvas: {fileID: 2103493234}
+  livestxt: {fileID: 1118737216}
+  isLost: 0
+  DefeatCanvas: {fileID: 1983479500}
 --- !u!1 &1983479500
 GameObject:
   m_ObjectHideFlags: 0
