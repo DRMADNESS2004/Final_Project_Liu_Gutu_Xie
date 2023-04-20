@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-static class Questions
+static class Constants
 {
-    public static readonly string[][] questions = new string[][]
+    public static readonly string[][] QUESTIONS = new string[][]
     {
         new string[] {"Q1: Select the correct syntax to print out \"hello world\"","System.out.println(\"Hello World\");","System.println(\"Hello World\");","println(\"Hello World\");"},
         new string[] {"Q2: What keyword should you use to comment out a single line","//","#","-"},
@@ -13,4 +13,6 @@ static class Questions
         new string[] {"54: What is the ouput of the following code: \nvar x = 5; \nSystem.out.println(--x);","4","5","error"}
 
     };
+
+    public static bool NEWQUESTION = true;
 }
