@@ -15,4 +15,6 @@ static class Constants
     };
 
     public static bool NEWQUESTION = true;
+
+    public static bool ISGRABBED = false;
 }
