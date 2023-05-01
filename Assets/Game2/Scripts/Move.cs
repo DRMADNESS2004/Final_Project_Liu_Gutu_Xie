@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class Move : MonoBehaviour
 {
     [SerializeField]
     private float downBorder;
@@ -21,9 +21,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private int speed=10;
 
-    [SerializeField]
-    private GameObject objTrigger;
-
     void Start()
     {
         rb2d= GetComponent<Rigidbody2D>();
@@ -32,8 +29,6 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        objTrigger.GetComponent<Rigidbody2D>().position=rb2d.position;
-
         float horizontal;
         float vertical;
 
@@ -45,7 +40,6 @@ public class PlayerMove : MonoBehaviour
         {
             horizontal = 0f;
             rb2d.velocity = new Vector2(horizontal, rb2d.velocity.y);
-            rb2d.position = new Vector2(Mathf.Clamp(rb2d.position.x, leftBorder, rightBorder), rb2d.position.y);
         }
         if (rb2d.position.y >= downBorder && rb2d.position.y <= topBorder)
         {
@@ -53,10 +47,8 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-
             vertical = 0f;
             rb2d.velocity = new Vector2(rb2d.velocity.x, vertical);
-            rb2d.position = new Vector2(rb2d.position.x, Mathf.Clamp(rb2d.position.y, downBorder, topBorder));
         }
 
         Vector2 movement = new Vector2(horizontal, vertical);

@@ -20,7 +20,7 @@ public class TrashMove : MonoBehaviour
 
     Rigidbody2D playerRb2d;
 
-    Renderer renderer; 
+    private new Renderer renderer; 
     // Start is called before the first frame update
     void Start()
     {

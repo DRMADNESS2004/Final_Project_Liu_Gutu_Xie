@@ -3120,7 +3120,6 @@ GameObject:
   - component: {fileID: 1098937409}
   - component: {fileID: 1098937408}
   - component: {fileID: 1098937407}
-  - component: {fileID: 1098937405}
   - component: {fileID: 1098937411}
   m_Layer: 0
   m_Name: TempCharacter
@@ -3129,24 +3128,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1098937405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1098937404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 090311fcd7777c048afee7443ff83249, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  downBorder: -3.65
-  leftBorder: -7.69
-  rightBorder: 7.69
-  topBorder: 3.65
-  speed: 10
-  objTrigger: {fileID: 0}
 --- !u!50 &1098937407
 Rigidbody2D:
   serializedVersion: 4
