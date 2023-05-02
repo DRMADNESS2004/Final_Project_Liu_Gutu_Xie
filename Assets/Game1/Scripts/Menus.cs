@@ -80,7 +80,7 @@ public class Menus : MonoBehaviour
             NotWon();
         }
 
-        //defeat...
+        //defeat...`
         int life = Convert.ToInt32(livestxt.text);
         if(life == 0)
         {
