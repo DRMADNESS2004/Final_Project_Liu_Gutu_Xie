@@ -63,12 +63,12 @@ public class NbrGenerator : MonoBehaviour
 
     public void assignRandom()
     {
-        astNbr = Random.Range(1, 21);
+        astNbr = Random.Range(1, 20);
         astTxt.text = "" + astNbr;
         
-        m2Nbr = Random.RandomRange(1, 21);
-        m3Nbr = Random.RandomRange(1, 21);
-        m4Nbr = Random.RandomRange(1, 21);
+        m2Nbr = Random.Range(1, 20);
+        m3Nbr = Random.Range(1, 20);
+        m4Nbr = Random.Range(1, 20);
 
         //put em in a  list and assign at random to the .text things so the answer isn't at  the same place every time...
         multChoiceAns.Clear();
