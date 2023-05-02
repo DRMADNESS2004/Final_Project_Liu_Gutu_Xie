@@ -24,7 +24,7 @@ public class ScoreSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoretxt.text = score.ToString(); //resets it when game starts might want to remove...
+        scoretxt.text = score.ToString(); //resets it when game starts might want to remove....
         livestxt.text = lives.ToString();
     }
 

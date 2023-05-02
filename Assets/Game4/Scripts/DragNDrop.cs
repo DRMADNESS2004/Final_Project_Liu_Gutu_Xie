@@ -15,7 +15,7 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     public int id;
 
    
-
+    //blah blah blah
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();

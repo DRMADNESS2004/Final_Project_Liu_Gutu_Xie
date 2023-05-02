@@ -15,7 +15,7 @@ public class DropBox : MonoBehaviour, IDropHandler
     [SerializeField]
     private TMP_Text question;
     private int questionId;
-    //blah blah blah
+    
     
     bool isCpuDone = false;
     bool isRamDone = false;
@@ -35,7 +35,7 @@ public class DropBox : MonoBehaviour, IDropHandler
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
                 right.Play();
                 Invoke("getQuestion", 2f);
-               
+
             }
             else{
                 Debug.Log("Incorrect");
@@ -100,11 +100,6 @@ public class DropBox : MonoBehaviour, IDropHandler
         }
     }
 
-    IEnumerator WaitAWhile()
-    {
-        yield return new WaitForSeconds(2);
-
-        
-    }
+  
 
 }

@@ -39,10 +39,7 @@ public class NbrGenerator : MonoBehaviour
     // Update is called once per frame
      void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //    assignRandom();
-        //}
+
     }
 
     int DecimalToBinary(int decimalNumber)

@@ -18,6 +18,7 @@ public class onClick : MonoBehaviour
     public static NbrGenerator n;
 
     private bool correct = false;
+    //blah blah 
 
     // Start is called before the first frame update
     void Start()
