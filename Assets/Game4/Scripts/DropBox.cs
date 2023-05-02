@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 public class DropBox : MonoBehaviour, IDropHandler
 {
     public int id;
+    public AudioSource right;
+    public AudioSource wrong;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -15,11 +17,15 @@ public class DropBox : MonoBehaviour, IDropHandler
             if(eventData.pointerDrag.GetComponent<DragNDrop>().id == id)
             {
                 Debug.Log("Correct");
+                eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+                right.Play();
             }
             else{
                 Debug.Log("Incorrect");
+                eventData.pointerDrag.GetComponent<DragNDrop>().ResetPosition();
+                wrong.Play();
             }
-            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+           
         }
     }
 

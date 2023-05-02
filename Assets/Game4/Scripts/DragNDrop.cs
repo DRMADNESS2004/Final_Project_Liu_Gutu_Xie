@@ -8,13 +8,20 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     private RectTransform rectTransform;
     [SerializeField]
     private Canvas puzzleCanvas;
+    private Vector2 initPos;
+    
 
     private CanvasGroup canvasGroup;
     public int id;
+
+   
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        initPos = transform.position;
+
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -49,7 +56,6 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -61,5 +67,10 @@ public class DragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     public void OnDrop(PointerEventData eventData)
     {
         throw new System.NotImplementedException();
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = initPos;
     }
 }
