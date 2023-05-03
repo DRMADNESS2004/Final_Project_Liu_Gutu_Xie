@@ -10,6 +10,9 @@ public class onClick : MonoBehaviour
     private GameObject missile;
 
     [SerializeField]
+    private Vector3 position;
+
+    [SerializeField]
     private TMP_Text astTxt;
 
     [SerializeField]
@@ -24,9 +27,19 @@ public class onClick : MonoBehaviour
 
     private float speed = 5f;
 
+
+    [SerializeField]
+    private AsteroidCollision collisionScript;
+
+    public AudioSource missileHit;
+
+    [SerializeField]
+    private Vector3 missileOriginalPosition;
+
     // Start is called before the first frame update
     void Start()
     {
+        missileOriginalPosition = missile.transform.position;
         generateNewQ();
     }
 
@@ -37,6 +50,9 @@ public class onClick : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, metor.transform.position, speed * Time.deltaTime);
             transform.right = metor.transform.position - transform.position;
+
+            missile.transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z);
+            Debug.Log(collisionScript.isCollided);  
 
         }
     }
@@ -74,11 +90,16 @@ public class onClick : MonoBehaviour
             //prevents spam answering to cheat points as well as spam generating new questions
             if (!correct)
             {
+                
                 ScoreSystem.scoreSystem.correct();
                 correct = true;
-
-
+                if (collisionScript.isCollided)
+                {
+                   
+                    Invoke("ResetMissilePosition", 1f); // Add a delay of 1 second and call the ResetMissilePosition method
+                }
                 Invoke("generateNewQ", 5f);
+
             }
             
             
@@ -105,6 +126,11 @@ public class onClick : MonoBehaviour
         {
             Debug.LogError("NbrGenerator not found");
         }
+    }
+
+    private void ResetMissilePosition()
+    {
+        missile.transform.position = missileOriginalPosition;   
     }
 
 }
