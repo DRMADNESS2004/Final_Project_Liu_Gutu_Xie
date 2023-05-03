@@ -437,6 +437,7 @@ MonoBehaviour:
   missile: {fileID: 144023583}
   astTxt: {fileID: 830428476}
   mTxt: {fileID: 456082988}
+  metor: {fileID: 1289436764}
 --- !u!1 &147946408
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,6 +584,7 @@ MonoBehaviour:
   missile: {fileID: 147946408}
   astTxt: {fileID: 830428476}
   mTxt: {fileID: 1862911321}
+  metor: {fileID: 1289436764}
 --- !u!1 &152266442
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +770,7 @@ MonoBehaviour:
   missile: {fileID: 788279332}
   astTxt: {fileID: 0}
   mTxt: {fileID: 0}
+  metor: {fileID: 0}
 --- !u!1 &319096112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1576,7 @@ MonoBehaviour:
   missile: {fileID: 538684137}
   astTxt: {fileID: 830428476}
   mTxt: {fileID: 1350588184}
+  metor: {fileID: 1289436764}
 --- !u!1 &585128057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,6 +1890,7 @@ MonoBehaviour:
   missile: {fileID: 788279332}
   astTxt: {fileID: 830428476}
   mTxt: {fileID: 879504300}
+  metor: {fileID: 1289436764}
 --- !u!1 &830428474
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,7 +4189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1581137656
 MonoBehaviour:
   m_ObjectHideFlags: 0

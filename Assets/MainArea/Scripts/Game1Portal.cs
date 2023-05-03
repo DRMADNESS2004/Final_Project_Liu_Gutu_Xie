@@ -16,6 +16,7 @@ public class Game1Portal : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            DontDestroyPlayer.playerInstance.gameObject.SetActive(false);
             SceneManager.LoadScene("Game1");
 
         }

@@ -65,7 +65,7 @@ public class Menus : MonoBehaviour
         //victory
         int boom = Convert.ToInt32(mTxt.text);
         
-        if(boom == 20)
+        if(boom == 5) //maybe 10?
         {
             isWon = true;
         }
@@ -142,7 +142,8 @@ public class Menus : MonoBehaviour
 
     public void exit()
     {
-        SceneManager.LoadScene("MainArea");
+        Time.timeScale = 1;
+        SceneManager.LoadSceneAsync("Lobby");
     }
 
     public void Won()

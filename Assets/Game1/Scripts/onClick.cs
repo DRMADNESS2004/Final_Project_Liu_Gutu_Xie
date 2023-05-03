@@ -18,7 +18,11 @@ public class onClick : MonoBehaviour
     public static NbrGenerator n;
 
     private bool correct = false;
-    //blah blah 
+
+    [SerializeField]
+    private GameObject metor;
+
+    private float speed = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +33,12 @@ public class onClick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (correct)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, metor.transform.position, speed * Time.deltaTime);
+            transform.right = metor.transform.position - transform.position;
 
+        }
     }
 
     int DecimalToBinary(int decimalNumber)
@@ -50,10 +59,6 @@ public class onClick : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //if(DecimalToBinary(astTxt).ToString  == mTxt)
-        //{
-        //    //do smth
-        //}
 
         int dAst = Convert.ToInt32(astTxt.text);
         int boom = Convert.ToInt32(mTxt.text);
@@ -64,19 +69,23 @@ public class onClick : MonoBehaviour
 
         if (bAst == Boom)
         {
+            //right
             Debug.Log("You hit the asteroid!");
             //prevents spam answering to cheat points as well as spam generating new questions
             if (!correct)
             {
                 ScoreSystem.scoreSystem.correct();
                 correct = true;
-                Invoke("generateNewQ", 2);
+
+
+                Invoke("generateNewQ", 5f);
             }
             
             
         }
         else
         {
+            //wrong
             Debug.Log("Missed the asteroid!");
             ScoreSystem.scoreSystem.incorrect();
         }
