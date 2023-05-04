@@ -44,11 +44,11 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 2
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 130
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,7 +105,343 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: transparent-astronaut_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 776
+        width: 113
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4a803fa430d59d4b9cdb13ee88b4121
+      internalID: -533012646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_1
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 771
+        width: 114
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1a0a663f7504b049bb33ba6799d0db8
+      internalID: -1642545386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_2
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 776
+        width: 113
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0877d84adbae55646a167b1107941422
+      internalID: 1714300099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_3
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 771
+        width: 113
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ebee60e9432ee04298772e9abb7aaed
+      internalID: 699376308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_4
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 519
+        width: 119
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff4dee19d7e5084b86fc8f81f90af0e
+      internalID: -2109675877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_5
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 519
+        width: 100
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ac717b6658b3f142a3ce4813a0428c0
+      internalID: -1228334321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_6
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 519
+        width: 105
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a58182b71833ae4490b3ab7c7747cc9
+      internalID: -955448763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_7
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 519
+        width: 97
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dab5b8a7fb4ad6c4db0a370afa2a86cf
+      internalID: -2009060152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_8
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 268
+        width: 97
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 861e51c0674daa24a90458732786b44c
+      internalID: -385071618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_9
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 268
+        width: 102
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e079e7bdef88f994f877a93dbe7d8d6d
+      internalID: 536497040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_10
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 268
+        width: 97
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6434325b6e0ab6e45bfddef554699e8b
+      internalID: 879564060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_11
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 268
+        width: 119
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f17117f428c40840b3ad1db71cd716f
+      internalID: 510357165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_12
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 6
+        width: 113
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecaa793f985b2a047aa0565b84d96ce2
+      internalID: 1345672332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_13
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 6
+        width: 102
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9437f631e138a384984c676890f44303
+      internalID: 449135847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_14
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 6
+        width: 113
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a39e4ad9e6e664cb4075d97bf0b8df
+      internalID: 284507751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transparent-astronaut_15
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 6
+        width: 103
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86e01d488a8f7554b952d53ddbcc46d1
+      internalID: -135124862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -116,7 +452,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      transparent-astronaut_0: -533012646
+      transparent-astronaut_1: -1642545386
+      transparent-astronaut_10: 879564060
+      transparent-astronaut_11: 510357165
+      transparent-astronaut_12: 1345672332
+      transparent-astronaut_13: 449135847
+      transparent-astronaut_14: 284507751
+      transparent-astronaut_15: -135124862
+      transparent-astronaut_2: 1714300099
+      transparent-astronaut_3: 699376308
+      transparent-astronaut_4: -2109675877
+      transparent-astronaut_5: -1228334321
+      transparent-astronaut_6: -955448763
+      transparent-astronaut_7: -2009060152
+      transparent-astronaut_8: -385071618
+      transparent-astronaut_9: 536497040
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
