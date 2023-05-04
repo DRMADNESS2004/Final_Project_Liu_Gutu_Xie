@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMove : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 0.5f;
     private bool isWalking;
 
     private Rigidbody2D rb2d;
@@ -12,6 +12,7 @@ public class CharacterMove : MonoBehaviour
 
     private Vector2 movement;
     private Vector3 moveToPosition;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,13 +45,13 @@ public class CharacterMove : MonoBehaviour
             if (movement != Vector2.zero)
             {
                 moveToPosition = transform.position + new Vector3(movement.x, movement.y, 0); // +-1
-                anim.SetFloat("X", movement.x);
-                anim.SetFloat("Y", movement.y);
+                anim.SetFloat("input_x", movement.x);
+                anim.SetFloat("input_y", movement.y);
 
                 StartCoroutine(Move(moveToPosition));
             }
 
-            anim.SetBool("walking", isWalking);
+            anim.SetBool("isWalking", isWalking);
         }
     }
 
