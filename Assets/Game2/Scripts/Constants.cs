@@ -24,4 +24,6 @@ static class Constants
     public static float RBORDER=7.61f;
     public static float TBORDER=3.58f;
     public static float BBORDER=-3.56f;
+
+    public static string MAINSCENENAME = "Lobby";
 }

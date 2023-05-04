@@ -29,7 +29,8 @@ public class VerifyAnswers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inRange && !Constants.ISGRABBED&&lastCollided!=null)
+        
+        if (inRange && !Constants.ISGRABBED && lastCollided!=null)
         {
             if (lastCollided.GetComponent<TextMeshProUGUI>().text == Constants.QUESTIONS[Constants.QUESTIONNUM][1]) 
             {
@@ -38,6 +39,7 @@ public class VerifyAnswers : MonoBehaviour
                 totalScore++;
                 score.text = totalScore.ToString();
                 Constants.QUESTIONNUM++;
+                Debug.Log(Constants.QUESTIONNUM);
                 Constants.NEWQUESTION = true;
                 rb2d.MovePosition(new Vector2(0, 2.12f));
             }
@@ -57,6 +59,9 @@ public class VerifyAnswers : MonoBehaviour
             inRange = false;
             lastCollided= null;
         }
+        Debug.Log(inRange);
+        Debug.Log(lastCollided);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -67,5 +72,7 @@ public class VerifyAnswers : MonoBehaviour
             inRange = true;
             lastCollided= collided;
         }
+        Debug.Log(inRange);
+        Debug.Log(lastCollided);
     }
 }

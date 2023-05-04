@@ -33,7 +33,7 @@ public class DisplayQuestions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Constants.NEWQUESTION)
+        if (Constants.NEWQUESTION && Constants.QUESTIONNUM != Constants.QUESTIONS.Length - 1) 
         {
             Shuffle(arr);
             question.text = Constants.QUESTIONS[Constants.QUESTIONNUM][0];

@@ -42,6 +42,7 @@ public class HandleTrash : MonoBehaviour
         else
         {
             trashRb2d.bodyType = RigidbodyType2D.Kinematic;
+            trashRb2d.velocity = Vector2.zero;
             Constants.ISGRABBED = false;
         }
     }
