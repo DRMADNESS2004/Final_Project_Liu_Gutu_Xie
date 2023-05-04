@@ -4400,7 +4400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1581137656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5768,7 +5768,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 362}
+  m_AnchoredPosition: {x: 6, y: 167}
   m_SizeDelta: {x: 1900, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2083138854
@@ -5791,24 +5791,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to our game where you have a crucial mission to protect planet
-    Earth from incoming asteroids! Your task is to click on the rockets that have
-    the matching binary number to the asteroids'' decimal number. By doing so, you
-    will destroy the asteroids and prevent them from hitting our beloved planet.
+  m_text: 'Hurry! you have a crucial mission to protect  the spaceship from incoming
+    asteroids! Your task is to click on the rockets that have the matching binary
+    number to the asteroids'' decimal number. By doing so, you will destroy the asteroids
+    and prevent them from hitting our spaceship.
 
 
-    Binary
-    numbers are numbers that are expressed in a base-2 numeral system consisting
-    of only two digits, usually represented as 0 and 1. For example, the decimal
-    number 5 can be represented as 101 in binary. In our game, you will need to match
-    the binary number of the rocket to the decimal number of the asteroid to successfully
-    destroy it.
-
-
-    Remember, the fate of Earth rests on your shoulders! You must
-    act quickly and decisively to protect our planet from the incoming asteroids.
-    Use your quick thinking and reflexes to match the binary numbers and launch the
-    rockets at the right time.
+    You must act quickly and decisively
+    to protect our planet from the incoming asteroids. Use your quick thinking and
+    reflexes to match the binary numbers and launch the rockets at the right time.
 
 '
   m_isRightToLeft: 0
