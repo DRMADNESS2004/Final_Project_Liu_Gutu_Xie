@@ -10,17 +10,6 @@ public class HandleTrash : MonoBehaviour
 
     Rigidbody2D trashRb2d;
 
-    //Rigidbody2D playerRb2d;
-
-    /*[SerializeField]
-    private GameObject option1;
-
-    [SerializeField]
-    private GameObject option2;
-
-    [SerializeField]
-    private GameObject option3;*/
-
     private bool inRange = false;
 
     // Start is called before the first frame update
@@ -38,7 +27,7 @@ public class HandleTrash : MonoBehaviour
             {
                 if (Constants.ISGRABBED)
                 {
-                    trashRb2d.bodyType = RigidbodyType2D.Static;
+                    trashRb2d.bodyType = RigidbodyType2D.Kinematic;
                     Constants.ISGRABBED = false;
                     Debug.Log(Constants.ISGRABBED);
                 }
@@ -52,7 +41,7 @@ public class HandleTrash : MonoBehaviour
         }
         else
         {
-            trashRb2d.bodyType = RigidbodyType2D.Static;
+            trashRb2d.bodyType = RigidbodyType2D.Kinematic;
             Constants.ISGRABBED = false;
         }
     }
