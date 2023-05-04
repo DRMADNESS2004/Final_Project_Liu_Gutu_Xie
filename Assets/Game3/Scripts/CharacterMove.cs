@@ -1,54 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CharacterMove : MonoBehaviour
 {
-    public float moveSpeed = 0.5f;
+    public float moveSpeed = 2f;
     private bool isWalking;
 
     private Rigidbody2D rb2d;
     private Animator anim;
 
-    private Vector2 movement;
+    private Vector3 tilePosition;
     private Vector3 moveToPosition;
 
+    public Tilemap tilemap;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        // Get the center position of the starting tile
+        tilePosition = tilemap.GetCellCenterWorld(tilemap.WorldToCell(transform.position));
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (!isWalking)
         {
-            movement.x = Input.GetAxis("Horizontal");
-            movement.y = Input.GetAxis("Vertical");
+            // Get the tile movement direction
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            Vector2 tileDirection = new Vector2(horizontal, vertical);
 
-            //Make character move in one direction at a time only (no diagonals)
-            if (movement.x != 0)
+            // Make character move in one direction at a time only (no diagonals)
+            if (tileDirection.x != 0)
             {
-                movement.y = 0;
+                tileDirection.y = 0;
+            }
+            else if (tileDirection.y != 0)
+            {
+                tileDirection.x = 0;
             }
 
-            if (movement.y != 0)
+            if (tileDirection != Vector2.zero)
             {
-                movement.x = 0;
-            }
+                // Calculate the center position of the next tile
+                Vector3 nextTile = tilePosition + new Vector3(tileDirection.x, tileDirection.y, 0);
+                nextTile = tilemap.GetCellCenterWorld(tilemap.WorldToCell(nextTile));
 
-            //
-            if (movement != Vector2.zero)
-            {
-                moveToPosition = transform.position + new Vector3(movement.x, movement.y, 0); // +-1
-                anim.SetFloat("input_x", movement.x);
-                anim.SetFloat("input_y", movement.y);
+                // Set the animation parameters
+                anim.SetFloat("input_x", tileDirection.x);
+                anim.SetFloat("input_y", tileDirection.y);
 
-                StartCoroutine(Move(moveToPosition));
+                // Start the movement coroutine
+                StartCoroutine(Move(nextTile));
             }
 
             anim.SetBool("isWalking", isWalking);
@@ -59,15 +68,24 @@ public class CharacterMove : MonoBehaviour
     {
         isWalking = true;
 
-        while ((newPos - transform.position).sqrMagnitude > Mathf.Epsilon) // Comparing to smallest float > 0
+        // Get the position of the center of the next tile
+        Vector3Int nextCell = tilemap.WorldToCell(newPos);
+        Vector3 nextTilePos = tilemap.GetCellCenterWorld(nextCell);
+
+        // Adjust the position of the character to align with the center of the tile
+        Vector3 characterPos = nextTilePos;
+        characterPos.y += 0.5f; // Assumes that the character is 1 unit tall
+
+        while (Vector3.Distance(transform.position, characterPos) > 0.01f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, newPos, moveSpeed * Time.fixedDeltaTime);
+            // Move towards the center of the next tile
+            transform.position = Vector3.MoveTowards(transform.position, characterPos, moveSpeed * Time.deltaTime);
             yield return null;
         }
 
-        transform.position = newPos;
+        // Update the tile position and set isWalking to false
+        tilePosition = nextTilePos;
         isWalking = false;
-
-        transform.Translate(movement.x * moveSpeed * Time.fixedDeltaTime, movement.y * moveSpeed * Time.fixedDeltaTime, 0);
     }
+
 }
