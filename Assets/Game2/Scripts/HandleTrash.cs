@@ -12,31 +12,27 @@ public class HandleTrash : MonoBehaviour
 
     //Rigidbody2D playerRb2d;
 
-    [SerializeField]
+    /*[SerializeField]
     private GameObject option1;
 
     [SerializeField]
     private GameObject option2;
 
     [SerializeField]
-    private GameObject option3;
+    private GameObject option3;*/
+
+    private bool inRange = false;
 
     // Start is called before the first frame update
     void Start()
     {
         trashRb2d = trash.GetComponent<Rigidbody2D>();
-        //playerRb2d=GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject == trash)
+        if (inRange)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -44,27 +40,36 @@ public class HandleTrash : MonoBehaviour
                 {
                     trashRb2d.bodyType = RigidbodyType2D.Static;
                     Constants.ISGRABBED = false;
+                    Debug.Log(Constants.ISGRABBED);
                 }
                 else
-                {
+                {   
                     trashRb2d.bodyType = RigidbodyType2D.Kinematic;
                     Constants.ISGRABBED = true;
+                    Debug.Log(Constants.ISGRABBED);
                 }
             }
         }
-
-        if(collision.gameObject == Input.GetKeyDown(KeyCode.Space))
+        else
         {
-            if (Constants.ISGRABBED)
-            {
-                trashRb2d.bodyType = RigidbodyType2D.Static;
-                Constants.ISGRABBED = false;
-            }
+            trashRb2d.bodyType = RigidbodyType2D.Static;
+            Constants.ISGRABBED = false;
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (collision.gameObject == trash)
+        {
+            inRange = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == trash)
+        {
+            inRange= true;
+        }
     }
 }

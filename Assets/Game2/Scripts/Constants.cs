@@ -17,4 +17,9 @@ static class Constants
     public static bool NEWQUESTION = true;
 
     public static bool ISGRABBED = false;
+
+    public static float LBORDER=-7.67f;
+    public static float RBORDER=7.61f;
+    public static float TBORDER=3.58f;
+    public static float BBORDER=-3.56f;
 }

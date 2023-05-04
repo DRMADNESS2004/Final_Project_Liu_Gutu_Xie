@@ -9,48 +9,87 @@ public class TrashMove : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    //rotation
+    //private Vector2 rotationPoint;
+
     [SerializeField]
-    private float left;
-    [SerializeField] 
-    private float right;
-    [SerializeField] 
-    private float top;
-    [SerializeField] 
-    private float bottom;
+    private float rotationAngle=10f;
 
-    Rigidbody2D playerRb2d;
+    [SerializeField]
+    private float moveForce=100f;
 
-    private new Renderer renderer; 
+    [SerializeField]
+    private float speed;
+
+    public float rotationDistance = 1f;
+
+    public bool grabbedOnce=true;
+
     // Start is called before the first frame update
     void Start()
     {
         rb2d= GetComponent<Rigidbody2D>();
-        renderer= GetComponent<Renderer>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Bounds bounds = renderer.bounds;
-        float width = bounds.size.x;
-        float height = bounds.size.y;
 
-        if (Constants.ISGRABBED && Input.GetKey(KeyCode.D))
+        if (Constants.ISGRABBED)
         {
-            rb2d.MovePosition(rb2d.position+new Vector2(playerRb2d.position.x+width, playerRb2d.position.y));
-        }
-        if (Constants.ISGRABBED && Input.GetKey(KeyCode.A))
-        {
-            rb2d.MovePosition(rb2d.position + new Vector2(playerRb2d.position.x - width, playerRb2d.position.y));
-        }
-        if (Constants.ISGRABBED && Input.GetKey(KeyCode.W))
-        {
-            rb2d.MovePosition(rb2d.position + new Vector2(playerRb2d.position.x, playerRb2d.position.y + height));
-        }
-        if (Constants.ISGRABBED && Input.GetKey(KeyCode.S))
-        {
-            rb2d.MovePosition(rb2d.position + new Vector2(playerRb2d.position.x, playerRb2d.position.y - height));
-        }
+            //rotation
+            //rotationPoint = player.GetComponent<Rigidbody2D>().position;
 
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+
+            Vector2 movement = new Vector2(horizontal, vertical);
+            rb2d.velocity = movement * speed;
+
+            if (rb2d.position.x <= Constants.LBORDER)
+            {
+                rb2d.position = new Vector2(Constants.LBORDER, rb2d.position.y);
+            }
+            else if(rb2d.position.x >= Constants.RBORDER)
+            {
+                rb2d.position = new Vector2(Constants.RBORDER, rb2d.position.y);
+            }
+        
+            if (rb2d.position.y <= Constants.BBORDER)
+            {
+                rb2d.position = new Vector2(rb2d.position.x, Constants.BBORDER);
+            }
+            else if(rb2d.position.y >= Constants.TBORDER)
+            {
+                rb2d.position = new Vector2(rb2d.position.x, Constants.TBORDER);
+            }
+
+            //rotation of garbage
+            /*if (Input.GetKey(KeyCode.D))
+            {
+                Debug.Log(1);
+                Vector2 offset = rb2d.worldCenterOfMass - rotationPoint;
+                Quaternion rotation = Quaternion.Euler(0, 0, rotationAngle);
+                Vector2 rotatedOffset = rotation * offset;
+                Vector2 targetPosition = rotationPoint + rotatedOffset;
+                rb2d.MovePosition(targetPosition);
+                rb2d.MoveRotation(rb2d.rotation + rotationAngle);
+
+                rotationPoint = player.GetComponent<Rigidbody2D>().position;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                Debug.Log(2);
+                Vector2 offset = rb2d.worldCenterOfMass - rotationPoint;
+                Quaternion rotation = Quaternion.Euler(0, 0, -rotationAngle);
+                Vector2 rotatedOffset = rotation * offset;
+                Vector2 targetPosition = rotationPoint + rotatedOffset;
+                rb2d.MovePosition(targetPosition);
+                rb2d.MoveRotation(rb2d.rotation - rotationAngle);
+
+                rotationPoint = player.GetComponent<Rigidbody2D>().position;
+            }*/
+        }
     }
 }
