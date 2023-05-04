@@ -32,6 +32,8 @@ public class Menus : MonoBehaviour
     [SerializeField]
     private GameObject DefeatCanvas;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,13 +66,13 @@ public class Menus : MonoBehaviour
         }
         //victory
         int boom = Convert.ToInt32(mTxt.text);
-        
-        if(boom == 5) //maybe 10?
+
+        if (boom == 5) //maybe 10?
         {
             isWon = true;
         }
 
-        
+
         if (isWon)
         {
             Won();
@@ -82,7 +84,7 @@ public class Menus : MonoBehaviour
 
         //defeat...`
         int life = Convert.ToInt32(livestxt.text);
-        if(life == 0)
+        if (life == 0)
         {
             isLost = true;
         }
@@ -155,10 +157,11 @@ public class Menus : MonoBehaviour
 
     public void NotWon()
     {
-        
+
         Time.timeScale = 1;
         victoryCanvas.SetActive(false);
         isWon = false;
+
     }
 
     public void Lost()
@@ -166,6 +169,7 @@ public class Menus : MonoBehaviour
         Time.timeScale = 0;
         DefeatCanvas.SetActive(true);
         isLost = true;
+        
     }
 
     public void NotLost()
@@ -174,4 +178,5 @@ public class Menus : MonoBehaviour
         DefeatCanvas.SetActive(false);
         isLost = false;
     }
+
 }

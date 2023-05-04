@@ -33,6 +33,8 @@ public class onClick : MonoBehaviour
 
     public AudioSource missileHit;
 
+    public AudioSource wrong;
+
     [SerializeField]
     private Vector3 missileOriginalPosition;
 
@@ -52,7 +54,12 @@ public class onClick : MonoBehaviour
             transform.right = metor.transform.position - transform.position;
 
             missile.transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z);
-            Debug.Log(collisionScript.isCollided);  
+            Debug.Log(collisionScript.isCollided);
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                missile.transform.position = missileOriginalPosition;
+            }
 
         }
     }
@@ -93,12 +100,12 @@ public class onClick : MonoBehaviour
                 
                 ScoreSystem.scoreSystem.correct();
                 correct = true;
-                if (collisionScript.isCollided)
-                {
+                //if (collisionScript.isCollided)
+                //{
                    
-                    Invoke("ResetMissilePosition", 1f); // Add a delay of 1 second and call the ResetMissilePosition method
-                }
-                Invoke("generateNewQ", 5f);
+                //    Invoke("ResetMissilePosition", 1f); 
+                //}
+                Invoke("generateNewQ", 3f);
 
             }
             
@@ -109,6 +116,7 @@ public class onClick : MonoBehaviour
             //wrong
             Debug.Log("Missed the asteroid!");
             ScoreSystem.scoreSystem.incorrect();
+            wrong.Play();
         }
 
 
@@ -116,6 +124,7 @@ public class onClick : MonoBehaviour
 
     private void generateNewQ()
     {
+        missile.transform.position = missileOriginalPosition;
         NbrGenerator nbrGen = FindObjectOfType<NbrGenerator>();
         if (nbrGen!=null)
         {
@@ -128,7 +137,7 @@ public class onClick : MonoBehaviour
         }
     }
 
-    private void ResetMissilePosition()
+    public void ResetMissilePosition()
     {
         missile.transform.position = missileOriginalPosition;   
     }

@@ -6,11 +6,15 @@ public class AsteroidCollision : MonoBehaviour
 {
     public bool isCollided = false;
 
+    [SerializeField]
+    private GameObject missile;
+
     public AudioSource missileHit;
+
+    
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -22,6 +26,8 @@ public class AsteroidCollision : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
 
     {
+        onClick oc = GetComponent<onClick>();
+
         Debug.Log("MissileCollided");
         //isCollided = true;
 
@@ -30,6 +36,7 @@ public class AsteroidCollision : MonoBehaviour
         {
             missileHit.Play();
             isCollided = true;
+            oc.ResetMissilePosition();
         }
 
     }
