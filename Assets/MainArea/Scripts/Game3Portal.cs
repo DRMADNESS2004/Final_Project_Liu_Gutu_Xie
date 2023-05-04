@@ -18,7 +18,7 @@ public class NewBehaviourScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             DontDestroyPlayer.playerInstance.gameObject.SetActive(false);
-            SceneManager.LoadScene("Game3");
+            SceneManager.LoadScene("Map1");
 
         }
     }
