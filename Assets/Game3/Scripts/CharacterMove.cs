@@ -15,6 +15,7 @@ public class CharacterMove : MonoBehaviour
     private Vector3 moveToPosition;
 
     public Tilemap tilemap;
+    public LayerMask wallsLayer;
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +75,17 @@ public class CharacterMove : MonoBehaviour
 
         // Adjust the position of the character to align with the center of the tile
         Vector3 characterPos = nextTilePos;
-        characterPos.y += 0.5f; // Assumes that the character is 1 unit tall
+        characterPos.y += 0.3f; // 0f = center of player is clamped to center of tile, the higher the number is, the closer his feet get close to the center of the tile
+                                // this also means that a too high number will mess up the code. 0.3f makes it seem closer to walls when colliding, but makes the player
+                                // standing a bit below the center of the tile, which is fine.
+        
+        
+        // Check if the next tile is walkable
+        if (!isWalkable(nextTilePos))
+        {
+            isWalking = false;
+            yield break;
+        }
 
         while (Vector3.Distance(transform.position, characterPos) > 0.01f)
         {
@@ -87,5 +98,13 @@ public class CharacterMove : MonoBehaviour
         tilePosition = nextTilePos;
         isWalking = false;
     }
-
+    
+    private bool isWalkable(Vector3 targetPos)
+    {
+        if (Physics2D.OverlapCircle(targetPos, 0.1f, wallsLayer) != null)
+        {
+            return false;
+        }
+        return true;
+    }
 }
