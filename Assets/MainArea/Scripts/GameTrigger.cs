@@ -6,7 +6,7 @@ public class Game1Trigger : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject game1Script;
+    private GameObject gameScript;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +24,12 @@ public class Game1Trigger : MonoBehaviour
 
     {
         Debug.Log("Character has entered trigger area.");
-        game1Script.SetActive(true);
+        gameScript.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         Debug.Log("Character has exited trigger area.");
-        game1Script.SetActive(false);
+        gameScript.SetActive(false);
     }
 }

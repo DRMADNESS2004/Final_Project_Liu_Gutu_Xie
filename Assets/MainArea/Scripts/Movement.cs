@@ -4,52 +4,31 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    Rigidbody2D rb2d;
+
     [SerializeField]
-    private float speed;
-
-    private Rigidbody2D rb2d;
-
-    private Vector3 movementDirection;
+    float speed = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
+        Debug.Log("Has Started");
         rb2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Updating");
+        if (Input.GetKeyDown(KeyCode.D))
+            {
+            Debug.Log("Attempt to move to the right!");
+            }
 
-        movementDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    transform.Translate(new Vector3(speed, 0, 0) * Time.deltaTime);
+        var x = Input.GetAxisRaw("Horizontal");
+        var y = Input.GetAxisRaw("Vertical");
 
-        //}
-
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    transform.Translate(new Vector3(-speed, 0, 0) * Time.deltaTime);
-
-        //}
-
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    transform.Translate(new Vector3(0, speed, 0) * Time.deltaTime);
-
-        //}
-
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    transform.Translate(new Vector3(0, -speed, 0) * Time.deltaTime);
-
-        //}
-
-    }
-
-    private void FixedUpdate()
-    {
-        rb2d.velocity = movementDirection * speed * Time.deltaTime;
+        rb2d.MovePosition(transform.position + new Vector3(x, y) * speed * Time.deltaTime);
     }
 }

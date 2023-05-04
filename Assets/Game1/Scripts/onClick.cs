@@ -10,6 +10,9 @@ public class onClick : MonoBehaviour
     private GameObject missile;
 
     [SerializeField]
+    private Vector3 position;
+
+    [SerializeField]
     private TMP_Text astTxt;
 
     [SerializeField]
@@ -18,18 +21,47 @@ public class onClick : MonoBehaviour
     public static NbrGenerator n;
 
     private bool correct = false;
-    //blah blah 
+
+    [SerializeField]
+    private GameObject metor;
+
+    private float speed = 5f;
+
+
+    [SerializeField]
+    private AsteroidCollision collisionScript;
+
+    public AudioSource missileHit;
+
+    public AudioSource wrong;
+
+    [SerializeField]
+    private Vector3 missileOriginalPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        missileOriginalPosition = missile.transform.position;
         generateNewQ();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (correct)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, metor.transform.position, speed * Time.deltaTime);
+            transform.right = metor.transform.position - transform.position;
 
+            missile.transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z);
+            Debug.Log(collisionScript.isCollided);
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                missile.transform.position = missileOriginalPosition;
+            }
+
+        }
     }
 
     int DecimalToBinary(int decimalNumber)
@@ -50,10 +82,6 @@ public class onClick : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //if(DecimalToBinary(astTxt).ToString  == mTxt)
-        //{
-        //    //do smth
-        //}
 
         int dAst = Convert.ToInt32(astTxt.text);
         int boom = Convert.ToInt32(mTxt.text);
@@ -64,21 +92,31 @@ public class onClick : MonoBehaviour
 
         if (bAst == Boom)
         {
+            //right
             Debug.Log("You hit the asteroid!");
             //prevents spam answering to cheat points as well as spam generating new questions
             if (!correct)
             {
+                
                 ScoreSystem.scoreSystem.correct();
                 correct = true;
-                Invoke("generateNewQ", 2);
+                //if (collisionScript.isCollided)
+                //{
+                   
+                //    Invoke("ResetMissilePosition", 1f); 
+                //}
+                Invoke("generateNewQ", 3f);
+
             }
             
             
         }
         else
         {
+            //wrong
             Debug.Log("Missed the asteroid!");
             ScoreSystem.scoreSystem.incorrect();
+            wrong.Play();
         }
 
 
@@ -86,6 +124,7 @@ public class onClick : MonoBehaviour
 
     private void generateNewQ()
     {
+        missile.transform.position = missileOriginalPosition;
         NbrGenerator nbrGen = FindObjectOfType<NbrGenerator>();
         if (nbrGen!=null)
         {
@@ -96,6 +135,11 @@ public class onClick : MonoBehaviour
         {
             Debug.LogError("NbrGenerator not found");
         }
+    }
+
+    public void ResetMissilePosition()
+    {
+        missile.transform.position = missileOriginalPosition;   
     }
 
 }
