@@ -75,8 +75,12 @@ public class CharacterMove : MonoBehaviour
 
         // Adjust the position of the character to align with the center of the tile
         Vector3 characterPos = nextTilePos;
-        characterPos.y += 0.5f; // Assumes that the character is 1 unit tall
-                                // Check if the next tile is walkable
+        characterPos.y += 0.3f; // 0f = center of player is clamped to center of tile, the higher the number is, the closer his feet get close to the center of the tile
+                                // this also means that a too high number will mess up the code. 0.3f makes it seem closer to walls when colliding, but makes the player
+                                // standing a bit below the center of the tile, which is fine.
+        
+        
+        // Check if the next tile is walkable
         if (!isWalkable(nextTilePos))
         {
             isWalking = false;
@@ -97,7 +101,7 @@ public class CharacterMove : MonoBehaviour
     
     private bool isWalkable(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.3f, wallsLayer) != null)
+        if (Physics2D.OverlapCircle(targetPos, 0.1f, wallsLayer) != null)
         {
             return false;
         }
