@@ -29,6 +29,12 @@ public class DropBox : MonoBehaviour, IDropHandler
     Stack<int> stack = new Stack<int>();
 
 
+    //[SerializeField]
+    //private bool isWon = false;
+    [SerializeField]
+    private GameObject victoryCanvas;
+
+
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("Dropped");
@@ -71,7 +77,10 @@ public class DropBox : MonoBehaviour, IDropHandler
     // Update is called once per frame
     void Update()
     {
-
+        if (questionCounter == 6)
+        {
+            victoryCanvas.SetActive(true);
+        }
     }
 
     //public void getQuestion()
