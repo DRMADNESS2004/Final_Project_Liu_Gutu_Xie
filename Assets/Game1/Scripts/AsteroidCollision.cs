@@ -6,8 +6,8 @@ public class AsteroidCollision : MonoBehaviour
 {
     public bool isCollided = false;
 
-    //[SerializeField]
-    //private GameObject missile;
+    [SerializeField]
+    private GameObject missile;
 
     public AudioSource missileHit;
 
