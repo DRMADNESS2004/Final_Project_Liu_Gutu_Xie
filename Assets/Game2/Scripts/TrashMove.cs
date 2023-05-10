@@ -64,32 +64,6 @@ public class TrashMove : MonoBehaviour
             {
                 rb2d.position = new Vector2(rb2d.position.x, Constants.TBORDER);
             }
-
-            //rotation of garbage
-            /*if (Input.GetKey(KeyCode.D))
-            {
-                Debug.Log(1);
-                Vector2 offset = rb2d.worldCenterOfMass - rotationPoint;
-                Quaternion rotation = Quaternion.Euler(0, 0, rotationAngle);
-                Vector2 rotatedOffset = rotation * offset;
-                Vector2 targetPosition = rotationPoint + rotatedOffset;
-                rb2d.MovePosition(targetPosition);
-                rb2d.MoveRotation(rb2d.rotation + rotationAngle);
-
-                rotationPoint = player.GetComponent<Rigidbody2D>().position;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                Debug.Log(2);
-                Vector2 offset = rb2d.worldCenterOfMass - rotationPoint;
-                Quaternion rotation = Quaternion.Euler(0, 0, -rotationAngle);
-                Vector2 rotatedOffset = rotation * offset;
-                Vector2 targetPosition = rotationPoint + rotatedOffset;
-                rb2d.MovePosition(targetPosition);
-                rb2d.MoveRotation(rb2d.rotation - rotationAngle);
-
-                rotationPoint = player.GetComponent<Rigidbody2D>().position;
-            }*/
         }
     }
 }
