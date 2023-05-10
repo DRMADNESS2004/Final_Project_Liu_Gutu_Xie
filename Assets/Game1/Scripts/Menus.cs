@@ -13,6 +13,11 @@ public class Menus : MonoBehaviour
     private GameObject startCanvas;
 
     [SerializeField]
+    private bool isModeSelected = false;
+    [SerializeField]
+    private GameObject modeCanvas;
+
+    [SerializeField]
     private bool isPaused = false;
     [SerializeField]
     private GameObject pausedCanvas;
@@ -32,7 +37,7 @@ public class Menus : MonoBehaviour
     [SerializeField]
     private GameObject DefeatCanvas;
 
-
+    public int scoreLimit =5;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +57,16 @@ public class Menus : MonoBehaviour
         {
             NotStarted();
         }
+
+        if (isModeSelected)
+        {
+            modeSelected();
+        }
+        if (!isModeSelected)
+        {
+            modeNotSelected();
+        }
+
         //pause
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -67,7 +82,7 @@ public class Menus : MonoBehaviour
         //victory
         int boom = Convert.ToInt32(mTxt.text);
 
-        if (boom == 5) //maybe 10?
+        if (boom == scoreLimit) //maybe 10?
         {
             isWon = true;
         }
@@ -113,7 +128,20 @@ public class Menus : MonoBehaviour
         Time.timeScale = 1;
         startCanvas.SetActive(false);
         isStarted = true;
-        victoryCanvas.SetActive(false);
+        
+    }
+    public void modeNotSelected()
+    {
+        modeCanvas.SetActive(true);
+        Time.timeScale = 0;
+        isModeSelected = false;
+    }
+
+    public void modeSelected()
+    {
+        modeCanvas.SetActive(false);
+        Time.timeScale = 1;
+        isModeSelected = true;
     }
 
     public void PauseMe()
@@ -140,6 +168,7 @@ public class Menus : MonoBehaviour
         //NotLost();
         isLost = false;
         isWon = false;
+        isModeSelected = false;
     }
 
     public void exit()
@@ -177,6 +206,18 @@ public class Menus : MonoBehaviour
         Time.timeScale = 1;
         DefeatCanvas.SetActive(false);
         isLost = false;
+    }
+
+    public void regularMode()
+    {
+        isModeSelected = true;
+        scoreLimit = 5;
+    }
+
+    public void neverEndingMode()
+    {
+        isModeSelected = true;
+        scoreLimit = 9999;
     }
 
 }
