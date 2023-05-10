@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class onClick : MonoBehaviour
 {
@@ -38,16 +39,44 @@ public class onClick : MonoBehaviour
     [SerializeField]
     private Vector3 missileOriginalPosition;
 
+    //timer bs
+    //[SerializeField]
+    //private Slider timerSlider;
+
+    //[SerializeField]
+    //private TMP_Text timertxt;
+
+    //[SerializeField]
+    //private float gameTime = 10;
+
+    //[SerializeField]
+    //private bool stopTimer;
+
+
+    [SerializeField]
+    private bool isNeededToBereset = false;
+
     // Start is called before the first frame update
     void Start()
     {
         missileOriginalPosition = missile.transform.position;
         generateNewQ();
+        //stopTimer = false;
+        //timerSlider.maxValue = gameTime;
+        //timerSlider.value = gameTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        //restartTimer();
+
+        //if (isNeededToBereset)
+        //{
+        //    restartTimer();
+        //}
+
         if (correct)
         {
             transform.position = Vector2.MoveTowards(transform.position, metor.transform.position, speed * Time.deltaTime);
@@ -92,41 +121,25 @@ public class onClick : MonoBehaviour
 
         if (bAst == Boom)
         {
-            //right
-            Debug.Log("You hit the asteroid!");
-            //prevents spam answering to cheat points as well as spam generating new questions
-            if (!correct)
-            {
-                
-                ScoreSystem.scoreSystem.correct();
-                correct = true;
-                //if (collisionScript.isCollided)
-                //{
-                   
-                //    Invoke("ResetMissilePosition", 1f); 
-                //}
-                Invoke("generateNewQ", 3f);
-
-            }
-            
-            
+            right();
         }
         else
         {
-            //wrong
-            Debug.Log("Missed the asteroid!");
-            ScoreSystem.scoreSystem.incorrect();
-            wrong.Play();
+            notRight();
         }
 
 
     }
 
-    private void generateNewQ()
+
+
+    public void generateNewQ()
     {
+
         missile.transform.position = missileOriginalPosition;
         NbrGenerator nbrGen = FindObjectOfType<NbrGenerator>();
-        if (nbrGen!=null)
+
+        if (nbrGen != null)
         {
             nbrGen.assignRandom();
             correct = false;
@@ -139,7 +152,64 @@ public class onClick : MonoBehaviour
 
     public void ResetMissilePosition()
     {
-        missile.transform.position = missileOriginalPosition;   
+        missile.transform.position = missileOriginalPosition;
     }
 
+    private void right()
+    {
+        //right
+        Debug.Log("You hit the asteroid!");
+        //prevents spam answering to cheat points as well as spam generating new questions
+        if (!correct)
+        {
+
+            ScoreSystem.scoreSystem.correct();
+            correct = true;
+            //if (collisionScript.isCollided)
+            //{
+
+            //    Invoke("ResetMissilePosition", 1f); 
+            //}
+            Invoke("generateNewQ", 3f);
+        }
+
+    }
+
+    public void notRight()
+    {
+        // wrong
+            Debug.Log("Missed the asteroid!");
+        ScoreSystem.scoreSystem.incorrect();
+        wrong.Play();
+        Invoke("generateNewQ", 1f);
+        //timerSlider.value = 10;
+        //isNeededToBereset = true;
+    }
+
+    public void restartTimer()
+    {
+        //isNeededToBereset = false;
+        //float time = gameTime - Time.time;
+
+        //int minutes = Mathf.FloorToInt(time / 60);
+        //int seconds = Mathf.FloorToInt(time - minutes * 60f);
+
+        //string textTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+        //if (time <= 0)
+        //{
+        //    stopTimer = true;
+        //}
+        //if (stopTimer == false)
+        //{
+        //    timertxt.SetText(textTime);
+        //    timerSlider.value = time;
+
+        //}
+
+        //if (textTime == "0:00")
+        //{
+        //    notRight();
+        //}
+    }
 }

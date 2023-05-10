@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menus : MonoBehaviour
 {
@@ -39,9 +40,13 @@ public class Menus : MonoBehaviour
 
     public int scoreLimit =5;
 
+
+
+    
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 0;
 
     }
 
@@ -97,7 +102,7 @@ public class Menus : MonoBehaviour
             NotWon();
         }
 
-        //defeat...`
+        //defeat...
         int life = Convert.ToInt32(livestxt.text);
         if (life == 0)
         {
@@ -125,7 +130,7 @@ public class Menus : MonoBehaviour
 
     public void Started()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         startCanvas.SetActive(false);
         isStarted = true;
         
@@ -142,6 +147,7 @@ public class Menus : MonoBehaviour
         modeCanvas.SetActive(false);
         Time.timeScale = 1;
         isModeSelected = true;
+        
     }
 
     public void PauseMe()
