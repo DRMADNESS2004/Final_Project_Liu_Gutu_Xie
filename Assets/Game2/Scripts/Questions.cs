@@ -25,6 +25,6 @@ static class Questions
         new string[] {"Q17: Which option prints the value true \nint x = 10; \nint y = 9; \nSystem.out.println(...);", "All answers","y>8","x>y"},
         new string[] {"Q18: Print \"Hello World\" if x is greater than or equal to y \nint x = 50;\nint y = 10;\n (x ... y) {\nSystem.out.println(\"Hello World\");\n}", ">=","==","=>"},
         new string[] {"Q19: Which keyword creates an array of type String called cars. \n...={\"Volvo\", \"BMW\", \"Ford\"};", "String[] cars","Array<String> cars","ArrayList<String> cars"},
-        new string[] {"Q20: Which option prints the second item in the cars array \nString[] cars = {\"Volvo\", \"BMW\", \"Ford\"};\nSystem.out.println(...);", "boolean","long","String"}
+        new string[] {"Q20: Which option prints the second item in the cars array \nString[] cars = {\"Volvo\", \"BMW\", \"Ford\"};\nSystem.out.println(...);", "cars[1]", "cars.get(1)","cars[2]"}
     };
 }
