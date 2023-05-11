@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -17,7 +18,7 @@ public class DropBox : MonoBehaviour, IDropHandler
     [SerializeField]
     private TMP_Text question;
     private int questionId;
-    private int questionCounter = 1;
+    private int questionCounter = 0;
 
 
     bool isCpuDone = false;
@@ -34,6 +35,26 @@ public class DropBox : MonoBehaviour, IDropHandler
     [SerializeField]
     private GameObject victoryCanvas;
 
+    Dictionary<int, GameObject> canvasDict = new Dictionary<int, GameObject>();
+
+    [SerializeField]
+    private GameObject cpuCanvas;
+
+    [SerializeField]
+    private GameObject ramCanvas;
+
+    [SerializeField]
+    private GameObject hardDCanvas;
+
+    [SerializeField]
+    private GameObject keyboardCanvas;
+
+    [SerializeField]
+    private GameObject motheboardCanvas;
+
+    [SerializeField]
+    private GameObject mouseCanvas;
+
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -46,9 +67,15 @@ public class DropBox : MonoBehaviour, IDropHandler
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
                 right.Play();
 
-                Invoke("questionsV2", 2f);
-                Debug.Log("questions asked +1");
-                questionCounter++;
+                GameObject canvasToActivate;
+                if (canvasDict.TryGetValue(id, out canvasToActivate))
+                {
+                    canvasToActivate.SetActive(true);
+                }
+
+                //Invoke("questionsV2", 2f);
+                //Debug.Log("questions asked +1");
+                //questionCounter++;
             }
             else
             {
@@ -72,11 +99,19 @@ public class DropBox : MonoBehaviour, IDropHandler
         //isKeyDone = false;
         //isMotherBDone = false;
         //isMouseDone = false;
+
+        canvasDict.Add(1, cpuCanvas);
+        canvasDict.Add(2, ramCanvas);
+        canvasDict.Add(3, hardDCanvas);
+        canvasDict.Add(4, keyboardCanvas);
+        canvasDict.Add(5, motheboardCanvas);
+        canvasDict.Add(6, mouseCanvas);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(questionCounter);
         if (questionCounter == 6)
         {
             victoryCanvas.SetActive(true);
@@ -158,64 +193,74 @@ public class DropBox : MonoBehaviour, IDropHandler
 
     public void questionsV2()
     {
-       
-
-       
-
-        int top = stack.Peek();
-        Debug.Log(stack.Peek());
-        id = top;
-        questionId = top;
-
-
-
-        if (questionId == 1 && !isCpuDone)
+        try
         {
-            id = questionId;
-            question.text = "Which is the CPU?";
-            isCpuDone = true;
+            //if (stack.Count == 0)
+            //{
+            //    victoryCanvas.SetActive(true);
+            //}
 
+            int top = stack.Peek();
+            Debug.Log(stack.Peek());
+            id = top;
+            questionId = top;
+
+
+
+            if (questionId == 1 && !isCpuDone)
+            {
+                id = questionId;
+                question.text = "Which is the CPU?";
+                isCpuDone = true;
+
+            }
+
+            if (questionId == 2 && !isRamDone)
+            {
+                id = questionId;
+                question.text = "Which is the Ram?";
+                isRamDone = true;
+            }
+
+
+            if (questionId == 3 && !isHardDone)
+            {
+                id = questionId;
+                question.text = "Which is the Hard drive?";
+                isHardDone = true;
+            }
+
+
+            if (questionId == 4 && !isKeyDone)
+            {
+                id = questionId;
+                question.text = "Which is the Keyboard?";
+                isKeyDone = true;
+            }
+
+
+            if (questionId == 5 && !isMotherBDone)
+            {
+                id = questionId;
+                question.text = "Which is the Motherboard?";
+                isMotherBDone = true;
+            }
+
+            if (questionId == 6 && !isMouseDone)
+            {
+                id = questionId;
+                question.text = "Which is the Mouse?";
+                isMouseDone = true;
+            }
+
+            stack.Pop();
         }
-
-        if (questionId == 2 && !isRamDone)
+        catch(InvalidOperationException e)
         {
-            id = questionId;
-            question.text = "Which is the Ram?";
-            isRamDone = true;
+            Debug.LogWarning("Stack is empty: " + e.Message);
+            // handle the exception here, for example:
+            victoryCanvas.SetActive(true);
         }
-
-
-        if (questionId == 3 && !isHardDone)
-        {
-            id = questionId;
-            question.text = "Which is the Hard drive?";
-            isHardDone = true;
-        }
-
-
-        if (questionId == 4 && !isKeyDone)
-        {
-            id = questionId;
-            question.text = "Which is the Keyboard?";
-            isKeyDone = true;
-        }
-
-
-        if (questionId == 5 && !isMotherBDone)
-        {
-            id = questionId;
-            question.text = "Which is the Motherboard?";
-            isMotherBDone = true;
-        }
-
-        if (questionId == 6 && !isMouseDone)
-        {
-            id = questionId;
-            question.text = "Which is the Mouse?";
-            isMouseDone = true;
-        }
-
-        stack.Pop();
 
     }
     public void startStack()
@@ -241,9 +286,9 @@ public class DropBox : MonoBehaviour, IDropHandler
             }
            
         }
-
-
-
-
+    }
+    public void addToQuestionCounter()
+    {
+        questionCounter++;
     }
 }
