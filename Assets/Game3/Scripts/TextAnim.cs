@@ -28,6 +28,7 @@ public class TextAnim : MonoBehaviour
         
     }
 
+    //check if theres more chars
     void EndCheck()
     {
         if (i <= stringArray.Length - 1)
