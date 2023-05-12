@@ -16,6 +16,9 @@ public class pointerMovement : MonoBehaviour
     [SerializeField]
     private GameObject victoryCanvas;
 
+    [SerializeField]
+    private GameObject lockCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +51,8 @@ public class pointerMovement : MonoBehaviour
                 Debug.Log("correct");
                 unlocked.Play();
                 victoryCanvas.SetActive(true);
+                lockCanvas.SetActive(false);
+
             }
             else
             {

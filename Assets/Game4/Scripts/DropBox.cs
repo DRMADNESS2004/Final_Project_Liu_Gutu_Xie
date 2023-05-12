@@ -33,7 +33,8 @@ public class DropBox : MonoBehaviour, IDropHandler
     private GameObject victoryCanvas;
 
     [SerializeField]
-    private GameObject locked;
+    private GameObject lockedCanvas;
+
     [SerializeField]
     private GameObject match;
 
@@ -74,10 +75,6 @@ public class DropBox : MonoBehaviour, IDropHandler
                 {
                     canvasToActivate.SetActive(true);
                 }
-
-                //Invoke("questionsV2", 2f);
-                //Debug.Log("questions asked +1");
-                //questionCounter++;
             }
             else
             {
@@ -93,7 +90,7 @@ public class DropBox : MonoBehaviour, IDropHandler
     void Start()
     {
         startStack();
-        Invoke("questionsV2", 2f);
+        questionsV2();
         canvasDict.Add(1, cpuCanvas);
         canvasDict.Add(2, ramCanvas);
         canvasDict.Add(3, hardDCanvas);
@@ -109,10 +106,9 @@ public class DropBox : MonoBehaviour, IDropHandler
         if (questionCounter == 6)
         {
             match.SetActive(false);
-            locked.SetActive(true);
+            lockedCanvas.SetActive(true);
         }
     }
-
     public void questionsV2()
     {
         try
@@ -175,9 +171,9 @@ public class DropBox : MonoBehaviour, IDropHandler
         }
         catch(InvalidOperationException e)
         {
-            Debug.LogWarning("Stack is empty: " + e.Message);
+           
             match.SetActive(false);
-            locked.SetActive(true);
+            lockedCanvas.SetActive(true);
 
         }
 
