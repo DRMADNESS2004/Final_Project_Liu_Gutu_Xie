@@ -9,6 +9,11 @@ public class CanvasManager : MonoBehaviour
     private bool isStarted = false;
     [SerializeField]
     private GameObject startCanvas;
+    [SerializeField]
+    private GameObject lostCanvas;
+
+    [SerializeField]
+    private GameObject matchCanvas;
 
     [SerializeField]
     private bool isPaused = false;
@@ -36,6 +41,7 @@ public class CanvasManager : MonoBehaviour
     void Start()
     {
         DropBox db = GetComponent<DropBox>();
+        matchCanvas.SetActive(true);
     }
 
     // Update is called once per frame
@@ -99,6 +105,12 @@ public class CanvasManager : MonoBehaviour
         SceneManager.LoadSceneAsync("Lobby");
     }
 
+    public void restart()
+    {
+        startCanvas.SetActive(true);
+        lostCanvas.SetActive(false);
+    }
+
     public void ok()
     {
         cpuCanvas.SetActive(false);
@@ -107,17 +119,11 @@ public class CanvasManager : MonoBehaviour
         keyboardCanvas.SetActive(false);
         motheboardCanvas.SetActive(false);
         mouseCanvas.SetActive(false);
-        //DropBox db = GetComponent<DropBox>();
-        //Invoke("db.questionsV2", 1f);
 
         DropBox db = GameObject.Find("DropBoxObj").GetComponent<DropBox>();
         if (db != null)
-        {
-            //Invoke("db.questionsV2", 1f);
-            
-            
-                db.questionsV2();
-            
+        {   
+            db.questionsV2();
         }
         db.addToQuestionCounter();
     }

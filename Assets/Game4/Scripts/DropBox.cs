@@ -29,11 +29,14 @@ public class DropBox : MonoBehaviour, IDropHandler
     bool isMouseDone = false;
     Stack<int> stack = new Stack<int>();
 
-
-    //[SerializeField]
-    //private bool isWon = false;
     [SerializeField]
     private GameObject victoryCanvas;
+
+    [SerializeField]
+    private GameObject lockedCanvas;
+
+    [SerializeField]
+    private GameObject match;
 
     Dictionary<int, GameObject> canvasDict = new Dictionary<int, GameObject>();
 
@@ -72,10 +75,6 @@ public class DropBox : MonoBehaviour, IDropHandler
                 {
                     canvasToActivate.SetActive(true);
                 }
-
-                //Invoke("questionsV2", 2f);
-                //Debug.Log("questions asked +1");
-                //questionCounter++;
             }
             else
             {
@@ -90,16 +89,8 @@ public class DropBox : MonoBehaviour, IDropHandler
     // Start is called before the first frame update
     void Start()
     {
-        //getQuestion();
         startStack();
-        Invoke("questionsV2", 2f);
-        //isCpuDone = false;
-        //isRamDone = false;
-        //isHardDone = false;
-        //isKeyDone = false;
-        //isMotherBDone = false;
-        //isMouseDone = false;
-
+        questionsV2();
         canvasDict.Add(1, cpuCanvas);
         canvasDict.Add(2, ramCanvas);
         canvasDict.Add(3, hardDCanvas);
@@ -114,91 +105,14 @@ public class DropBox : MonoBehaviour, IDropHandler
         //Debug.Log(questionCounter);
         if (questionCounter == 6)
         {
-            victoryCanvas.SetActive(true);
+            match.SetActive(false);
+            lockedCanvas.SetActive(true);
         }
     }
-
-    //public void getQuestion()
-    //{
-    //    questionId = UnityEngine.Random.Range(13, 7);
-    //    Debug.Log(questionId);
-    //    if(questionId == 1 && !isCpuDone)
-    //    {
-    //        id = questionId;
-    //        question.text = "Which is the CPU?";
-    //         isCpuDone = true;
-
-    //    }
-    //    else
-    //    {
-    //        questionId = UnityEngine.Random.Range(1, 7);
-    //    }
-
-    //    if (questionId == 2 && !isRamDone)
-    //    {
-    //        id = questionId;
-    //        question.text = "Which is the Ram?";
-    //         isRamDone = true;
-    //    }
-    //    else
-    //    {
-    //        questionId = UnityEngine.Random.Range(1, 7);
-    //    }
-
-    //    if (questionId == 3 && !isHardDone)
-    //    {
-    //        id = questionId;
-    //        question.text = "Which is the Hard drive?";
-    //        isHardDone = true;
-    //    }
-    //    else
-    //    {
-    //        questionId = UnityEngine.Random.Range(1, 7);
-    //    }
-
-    //    if (questionId == 4 && !isKeyDone)
-    //    {
-    //        id = questionId;
-    //        question.text = "Which is the Keyboard?";
-    //        isKeyDone = true;
-    //    }
-    //    else
-    //    {
-    //        questionId = UnityEngine.Random.Range(1, 7);
-    //    }
-
-    //    if (questionId == 5 && !isMotherBDone)
-    //    {
-    //        id = questionId;
-    //        question.text = "Which is the Motherboard?";
-    //        isMotherBDone = true;
-    //    }
-    //    else
-    //    {
-    //        questionId = UnityEngine.Random.Range(1, 7);
-    //    }
-
-    //    if (questionId == 6 && !isMouseDone)
-    //    {
-    //        id = questionId;
-    //        question.text = "Which is the Mouse?";
-    //        isMouseDone = true;
-    //    }
-    //    else
-    //    {
-    //        questionId = UnityEngine.Random.Range(1, 7);
-    //    }
-
-    //}
-
     public void questionsV2()
     {
         try
         {
-            //if (stack.Count == 0)
-            //{
-            //    victoryCanvas.SetActive(true);
-            //}
 
             int top = stack.Peek();
             Debug.Log(stack.Peek());
@@ -257,9 +171,10 @@ public class DropBox : MonoBehaviour, IDropHandler
         }
         catch(InvalidOperationException e)
         {
-            Debug.LogWarning("Stack is empty: " + e.Message);
-            // handle the exception here, for example:
-            victoryCanvas.SetActive(true);
+           
+            match.SetActive(false);
+            lockedCanvas.SetActive(true);
+
         }
 
     }
