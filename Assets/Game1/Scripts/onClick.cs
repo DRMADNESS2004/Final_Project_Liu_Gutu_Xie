@@ -100,11 +100,6 @@ public class onClick : MonoBehaviour
                 
                 ScoreSystem.scoreSystem.correct();
                 correct = true;
-                //if (collisionScript.isCollided)
-                //{
-                   
-                //    Invoke("ResetMissilePosition", 1f); 
-                //}
                 Invoke("generateNewQ", 3f);
 
             }

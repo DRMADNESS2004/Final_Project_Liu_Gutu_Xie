@@ -107,17 +107,11 @@ public class CanvasManager : MonoBehaviour
         keyboardCanvas.SetActive(false);
         motheboardCanvas.SetActive(false);
         mouseCanvas.SetActive(false);
-        //DropBox db = GetComponent<DropBox>();
-        //Invoke("db.questionsV2", 1f);
 
         DropBox db = GameObject.Find("DropBoxObj").GetComponent<DropBox>();
         if (db != null)
-        {
-            //Invoke("db.questionsV2", 1f);
-            
-            
-                db.questionsV2();
-            
+        {   
+            db.questionsV2();
         }
         db.addToQuestionCounter();
     }

@@ -41,10 +41,12 @@ public class AsteroidCollision : MonoBehaviour
 
     }
 
+
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         Debug.Log("Missile Out");
         isCollided = false;
-
+        
     }
 }

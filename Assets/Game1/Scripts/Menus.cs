@@ -164,8 +164,6 @@ public class Menus : MonoBehaviour
         ScoreSystem.scoreSystem.Reset();
         mTxt.text = "0";
         livestxt.text = "3";
-        //NotWon();   
-        //NotLost();
         isLost = false;
         isWon = false;
         isModeSelected = false;

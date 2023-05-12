@@ -26,7 +26,7 @@ public class pointerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Calculate the new position of the pointer using Mathf.PingPong
+        // Calculate the new position of the pointer
         float newX = Mathf.PingPong(Time.time * speed, maxX - minX) + minX;
 
         // Update the position of the pointer
@@ -42,10 +42,9 @@ public class pointerMovement : MonoBehaviour
         {
             float currentX = rectTransform.anchoredPosition.x;
             Debug.Log(currentX);
-            // Check if the pointer is between -796 and -760
+            //check if it's in the green zone
             if (currentX > -796.0f && currentX < -760.0f)
             {
-                // Log "correct" to the console
                 Debug.Log("correct");
                 unlocked.Play();
                 victoryCanvas.SetActive(true);

@@ -24,7 +24,7 @@ public class ScoreSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoretxt.text = score.ToString(); //resets it when game starts might want to remove....
+        scoretxt.text = score.ToString(); 
         livestxt.text = lives.ToString();
     }
 
@@ -37,15 +37,8 @@ public class ScoreSystem : MonoBehaviour
 
     public void correct()
     {
-        if (score <= 20)
-        {
-            score++;
-        }
+        score++;   
         scoretxt.text = score.ToString();
-        if(score == 20)
-        {
-            //activate win screen
-        }
 
     }
 
@@ -54,10 +47,6 @@ public class ScoreSystem : MonoBehaviour
         if (lives > 0)
         {
             lives--;
-        }
-        if(lives == 0)
-        {
-            //activate lost screen
         }
         livestxt.text = lives.ToString();
     }
