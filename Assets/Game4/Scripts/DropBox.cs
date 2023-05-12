@@ -35,6 +35,11 @@ public class DropBox : MonoBehaviour, IDropHandler
     [SerializeField]
     private GameObject victoryCanvas;
 
+    [SerializeField]
+    private GameObject locked;
+    [SerializeField]
+    private GameObject match;
+
     Dictionary<int, GameObject> canvasDict = new Dictionary<int, GameObject>();
 
     [SerializeField]
@@ -114,7 +119,8 @@ public class DropBox : MonoBehaviour, IDropHandler
         //Debug.Log(questionCounter);
         if (questionCounter == 6)
         {
-            victoryCanvas.SetActive(true);
+            match.SetActive(false);
+            locked.SetActive(true);
         }
     }
 
@@ -258,8 +264,9 @@ public class DropBox : MonoBehaviour, IDropHandler
         catch(InvalidOperationException e)
         {
             Debug.LogWarning("Stack is empty: " + e.Message);
-            // handle the exception here, for example:
-            victoryCanvas.SetActive(true);
+            match.SetActive(false);
+            locked.SetActive(true);
+
         }
 
     }
