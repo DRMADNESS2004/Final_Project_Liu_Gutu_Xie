@@ -8,26 +8,19 @@ using UnityEngine.SceneManagement;
 public class DisplayEndMenu : MonoBehaviour
 {
 
-    [SerializeField]
-    private GameObject endMenu;
+    public GameObject endMenu;
 
-    [SerializeField]
-    private TextMeshProUGUI totalScore;
+    public TextMeshProUGUI totalScore;
 
-    [SerializeField] 
-    private TextMeshProUGUI currentScore;
+    public TextMeshProUGUI currentScore;
 
-    [SerializeField] 
-    private TextMeshProUGUI totalQuestions;
+    public TextMeshProUGUI totalQuestions;
 
-    [SerializeField]
-    private Button replay;
+    public Button replay;
 
-    [SerializeField]
-    private Button menu;
+    public Button menu;
 
-    [SerializeField]
-    private TextMeshProUGUI validation;
+    public TextMeshProUGUI validation;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +31,7 @@ public class DisplayEndMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Constants.QUESTIONNUM == Constants.QUESTIONS.Length - 1)
+        if (Constants.QUESTIONNUM == 2/*Constants.QUESTIONS.Length - 1*/)
         {
             Time.timeScale = 0;
             endMenu.SetActive(true);
@@ -55,6 +48,7 @@ public class DisplayEndMenu : MonoBehaviour
         currentScore.text = "0";
         validation.text = "";
         Constants.QUESTIONNUM = 0;
+        Constants.NEWQUESTION = true;
     }
 
     public void MainMenu()
