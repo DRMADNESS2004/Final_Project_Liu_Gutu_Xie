@@ -5,58 +5,61 @@ using TMPro;
 
 public class TextAnim : MonoBehaviour
 {
-    [SerializeField]
-    TextMeshProUGUI _textMeshPro;
+    public TextMeshProUGUI textMeshProUGUI;
+    public string[] lines;
+    public float textSpeed;
 
-    public string[] stringArray;
-
-    float timeBtwnChars = .3f;
-
-    float timeBtwnWords = .5f;
-
-    int i = 0;
+    private int index;
 
     // Start is called before the first frame update
     void Start()
     {
-        EndCheck();
+        textMeshProUGUI.text = string.Empty;
+        StartDialogue();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    //check if theres more chars
-    void EndCheck()
-    {
-        if (i <= stringArray.Length - 1)
+        if (Input.GetMouseButtonDown(0))
         {
-            _textMeshPro.text = stringArray[i];
-            StartCoroutine(TextVisible());
+            if (textMeshProUGUI.text == lines[index])
+            {
+                NextLine();
+            }
+            else
+            {
+                StopAllCoroutines();
+                textMeshProUGUI.text = lines[index];
+            }
         }
     }
 
-    private IEnumerator TextVisible()
+    void StartDialogue()
     {
-        _textMeshPro.ForceMeshUpdate();
-        int totalVisibleChars = _textMeshPro.textInfo.characterCount;
-        int counter = 0;
+        index = 0;
+        StartCoroutine(TypeLine());
+    }
 
-        while (true)
+    IEnumerator TypeLine()
+    {
+        foreach (char c in lines[index].ToCharArray())
         {
-            int visibleCount = counter % (totalVisibleChars + 1);
-            _textMeshPro.maxVisibleCharacters = visibleCount;
-
-            if (visibleCount >= totalVisibleChars)
-            {
-                i++;
-                Invoke("EndCheck", timeBtwnChars); break;
-            }
-
-            counter++;
-            yield return new WaitForSeconds(timeBtwnChars);
+            textMeshProUGUI.text += c;
+            yield return new WaitForSeconds(textSpeed);
+        }
+    }
+    void NextLine()
+    {
+        if (index < lines.Length -1)
+        {
+            index++;
+            textMeshProUGUI.text = string.Empty;
+            StartCoroutine(TypeLine());
+        }
+        else
+        {
+            gameObject.SetActive(false);
         }
     }
 }
