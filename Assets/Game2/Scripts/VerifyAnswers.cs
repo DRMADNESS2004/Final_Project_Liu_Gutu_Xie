@@ -27,13 +27,15 @@ public class VerifyAnswers : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
         if (inRange && !Constants.ISGRABBED && lastCollided!=null)
         {
             if (lastCollided.GetComponent<TextMeshProUGUI>().text == Constants.QUESTIONS[Constants.QUESTIONNUM][1]) 
             {
+                rb2d.MovePosition(new Vector2(0, 2.12f));
+                Debug.Log("correct");
                 validation.text = "Correct!";
                 int totalScore=int.Parse(score.text);
                 totalScore++;
@@ -41,12 +43,15 @@ public class VerifyAnswers : MonoBehaviour
                 Constants.QUESTIONNUM++;
                 Debug.Log(Constants.QUESTIONNUM);
                 Constants.NEWQUESTION = true;
-                rb2d.MovePosition(new Vector2(0, 2.12f));
             }
             else
             {
+                Debug.Log("Incorrect");
                 validation.text = "Incorrect";
                 rb2d.MovePosition(new Vector2(0, 2.12f));
+                Constants.QUESTIONNUM++;
+                Debug.Log(Constants.QUESTIONNUM);
+                Constants.NEWQUESTION = true;
             }
         }
     }

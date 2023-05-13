@@ -17,6 +17,12 @@ public class DisplayQuestions : MonoBehaviour
     private TextMeshProUGUI option2;
     [SerializeField]
     private TextMeshProUGUI option3;
+    [SerializeField]
+    private TextMeshProUGUI option1_display;
+    [SerializeField]
+    private TextMeshProUGUI option2_display;
+    [SerializeField]
+    private TextMeshProUGUI option3_display;
 
     private List<int> arr = new List<int>{1,2,3};
 
@@ -24,22 +30,22 @@ public class DisplayQuestions : MonoBehaviour
     {
         Shuffle(arr);
         question.text = Constants.QUESTIONS[Constants.QUESTIONNUM][0];
-        option1.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[0]];
-        option2.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[1]];
-        option3.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[2]];
+        option1_display.text = option1.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[0]];
+        option2_display.text = option2.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[1]];
+        option3_display.text = option3.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[2]];
         Constants.NEWQUESTION = false;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Constants.NEWQUESTION && Constants.QUESTIONNUM != Constants.QUESTIONS.Length - 1) 
         {
             Shuffle(arr);
             question.text = Constants.QUESTIONS[Constants.QUESTIONNUM][0];
-            option1.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[0]];
-            option2.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[1]];
-            option3.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[2]];
+            option1_display.text = option1.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[0]];
+            option2_display.text = option2.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[1]];
+            option3_display.text = option3.text = Constants.QUESTIONS[Constants.QUESTIONNUM][arr[2]];
             Constants.NEWQUESTION = false;
         }
     }
