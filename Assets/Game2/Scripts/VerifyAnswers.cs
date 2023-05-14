@@ -20,10 +20,15 @@ public class VerifyAnswers : MonoBehaviour
     private GameObject lastCollided=null;
 
     Rigidbody2D rb2d;
+
+    AudioManager am;
+
     // Start is called before the first frame update
+
     void Start()
     {
         rb2d=GetComponent<Rigidbody2D>();
+        am=GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -42,6 +47,7 @@ public class VerifyAnswers : MonoBehaviour
                 score.text = totalScore.ToString();
                 Constants.QUESTIONNUM++;
                 Debug.Log(Constants.QUESTIONNUM);
+                am.Play("Lose");
                 Constants.NEWQUESTION = true;
             }
             else
@@ -51,7 +57,8 @@ public class VerifyAnswers : MonoBehaviour
                 rb2d.MovePosition(new Vector2(0, 2.12f));
                 Constants.QUESTIONNUM++;
                 Debug.Log(Constants.QUESTIONNUM);
-                Constants.NEWQUESTION = true;
+                am.Play("Lose");
+                Constants.NEWQUESTION = true; 
             }
         }
     }

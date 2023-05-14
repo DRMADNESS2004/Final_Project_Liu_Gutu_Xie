@@ -30,6 +30,8 @@ static class Constants
 
     public static bool NEWQUESTION = true;
 
+    public static bool STARTGAME = true;
+
     public static bool ISGRABBED = false;
 
     public static int QUESTIONNUM = 0;
