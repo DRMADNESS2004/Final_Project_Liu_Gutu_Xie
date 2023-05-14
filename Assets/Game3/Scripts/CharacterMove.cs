@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class CharacterMove : MonoBehaviour
 {
-    public float moveSpeed = 2f;
+    public float moveSpeed = 5f;
     private bool isWalking;
 
     private Rigidbody2D rb2d;
@@ -16,6 +16,9 @@ public class CharacterMove : MonoBehaviour
 
     public Tilemap tilemap;
     public LayerMask wallsLayer;
+
+    private bool isDialogueOpen = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +33,7 @@ public class CharacterMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isWalking)
+        if (!isWalking && !isDialogueOpen)
         {
             // Get the tile movement direction
             float horizontal = Input.GetAxisRaw("Horizontal");
@@ -75,7 +78,7 @@ public class CharacterMove : MonoBehaviour
 
         // Adjust the position of the character to align with the center of the tile
         Vector3 characterPos = nextTilePos;
-        characterPos.y += 0.3f; // 0f = center of player is clamped to center of tile, the higher the number is, the closer his feet get close to the center of the tile
+        characterPos.y += 0.4f; // 0f = center of player is clamped to center of tile, the higher the number is, the closer his feet get close to the center of the tile
                                 // this also means that a too high number will mess up the code. 0.3f makes it seem closer to walls when colliding, but makes the player
                                 // standing a bit below the center of the tile, which is fine.
         
@@ -107,4 +110,25 @@ public class CharacterMove : MonoBehaviour
         }
         return true;
     }
+
+    public void FreezeMovement()
+    {
+        // Stop the character from moving
+        moveSpeed = 0f;
+
+        // Disable the CharacterMove script to prevent further movement
+        enabled = false;
+    }
+
+    public void UnfreezeMovement()
+    {
+        // Enable the CharacterMove script to allow movement again
+        enabled = true;
+
+        // Reset the move speed to the default value
+        moveSpeed = 5f;
+    }
+
+
+
 }

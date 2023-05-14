@@ -479,6 +479,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2045748238}
   - {fileID: 1601057140}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -2982,6 +2983,8 @@ MonoBehaviour:
     to seek shelter.
   - Find tools to help you exit HQ and come find us at Beta.
   textSpeed: 0.05
+  characterMove: {fileID: 48900577}
+  dialogueBox: {fileID: 1601057139}
 --- !u!114 &1591595359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3109,7 +3112,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2045748238}
   - {fileID: 1591595357}
   m_Father: {fileID: 165512569}
   m_RootOrder: -1
@@ -6041,11 +6043,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2045748237}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: -3, z: 0}
+  m_LocalPosition: {x: 5, y: -203, z: 0}
   m_LocalScale: {x: 1336.0054, y: 1703.4069, z: 1336.0054}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1601057140}
+  m_Father: {fileID: 165512569}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2045748239
@@ -6086,8 +6088,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 212089517
-  m_SortingLayer: 4
+  m_SortingLayerID: 600022541
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 96039ce88164ef74587ec659b6efe03c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -8,8 +8,11 @@ public class TextAnim : MonoBehaviour
     public TextMeshProUGUI textMeshProUGUI;
     public string[] lines;
     public float textSpeed;
+    public CharacterMove characterMove;
+    public GameObject dialogueBox;
 
     private int index;
+    private bool isDialogueActive;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,8 @@ public class TextAnim : MonoBehaviour
 
     void StartDialogue()
     {
+        isDialogueActive = true;
+        characterMove.FreezeMovement();
         index = 0;
         StartCoroutine(TypeLine());
     }
@@ -49,6 +54,7 @@ public class TextAnim : MonoBehaviour
             yield return new WaitForSeconds(textSpeed);
         }
     }
+
     void NextLine()
     {
         if (index < lines.Length -1)
@@ -59,7 +65,11 @@ public class TextAnim : MonoBehaviour
         }
         else
         {
+            isDialogueActive=false;
+            characterMove.UnfreezeMovement();
             gameObject.SetActive(false);
+            dialogueBox.SetActive(false);
         }
     }
+
 }
