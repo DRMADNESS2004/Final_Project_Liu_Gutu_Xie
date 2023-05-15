@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 226332158}
   - component: {fileID: 226332157}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Context
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -734,8 +734,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 1469.5, y: 820.72}
+  m_AnchoredPosition: {x: 0, y: -25.640015}
+  m_SizeDelta: {x: 1650.55, y: 820.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &226332157
 MonoBehaviour:
@@ -757,15 +757,24 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Attention space station crew, please be advised that the trash sorting
+  m_text: 'Attention space station crew, please be advised that the trash sorting
     protocol has been updated. Moving forward, all waste must be sorted into the
     appropriate bins based on its composition. Organic waste must be placed in the
     green bin, plastics and metals in the blue bin, and hazardous materials in the
-    red bin.\n\r\nTo assist with the new protocol, the station has been equipped
+    red bin.
+
+    
+
+    To assist with the new protocol, the station has been equipped
     with a state-of-the-art trash sorting system. The system uses sensors to detect
     the composition of the waste and directs it to the appropriate bin. Please ensure
     that all waste is placed in the designated area for sorting, and do not attempt
-    to manually sort or dispose of any waste.\r\n\r"
+    to manually sort or dispose of any waste.
+
+    
+
+    Using the spacebar, you
+    can drag or drop the trash in one of the three garbage bins.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -792,8 +801,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1832,7 +1841,7 @@ GameObject:
   - component: {fileID: 440537680}
   - component: {fileID: 440537679}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1855,7 +1864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 415.47}
+  m_AnchoredPosition: {x: 0, y: 423.1}
   m_SizeDelta: {x: 1379.73, y: 249.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &440537679
@@ -2240,6 +2249,7 @@ GameObject:
   - component: {fileID: 734656127}
   - component: {fileID: 734656126}
   - component: {fileID: 734656130}
+  - component: {fileID: 734656131}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -2356,14 +2366,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734656125}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2374,7 +2384,96 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!60 &734656131
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734656125}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.86923075, y: 1.7769231}
+    newSize: {x: 0.86923075, y: 1.7769231}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.011538462, y: -0.88846153}
+      - {x: 0.22692308, y: -0.88846153}
+      - {x: 0.25, y: -0.85}
+      - {x: 0.2423077, y: -0.35}
+      - {x: 0.2423077, y: -0.11923077}
+      - {x: 0.25, y: -0.2653846}
+      - {x: 0.2653846, y: -0.28076923}
+      - {x: 0.25, y: -0.31153846}
+      - {x: 0.25, y: -0.42692307}
+      - {x: 0.2653846, y: -0.44230768}
+      - {x: 0.3576923, y: -0.45}
+      - {x: 0.41923076, y: -0.39615384}
+      - {x: 0.43461537, y: -0.33461538}
+      - {x: 0.43461537, y: 0.11923077}
+      - {x: 0.37307692, y: 0.19615385}
+      - {x: 0.27307692, y: 0.20384616}
+      - {x: 0.3653846, y: 0.31153846}
+      - {x: 0.3653846, y: 0.6730769}
+      - {x: 0.32692307, y: 0.7653846}
+      - {x: 0.25, y: 0.8576923}
+      - {x: 0.20384616, y: 0.88846153}
+      - {x: -0.21923077, y: 0.88846153}
+      - {x: -0.28846154, y: 0.81153846}
+      - {x: -0.31923077, y: 0.75769234}
+      - {x: -0.3653846, y: 0.6807692}
+      - {x: -0.3653846, y: 0.31153846}
+      - {x: -0.35, y: 0.29615384}
+      - {x: -0.28846154, y: 0.21923077}
+      - {x: -0.3576923, y: 0.20384616}
+      - {x: -0.40384614, y: 0.17307693}
+      - {x: -0.43461537, y: 0.11923077}
+      - {x: -0.43461537, y: -0.33461538}
+      - {x: -0.41923076, y: -0.39615384}
+      - {x: -0.3576923, y: -0.45}
+      - {x: -0.2653846, y: -0.44230768}
+      - {x: -0.25, y: -0.42692307}
+      - {x: -0.25, y: -0.31153846}
+      - {x: -0.2653846, y: -0.29615384}
+      - {x: -0.25, y: -0.2653846}
+      - {x: -0.25, y: -0.88846153}
+      - {x: -0.01923077, y: -0.88846153}
+      - {x: -0.011538462, y: -0.8730769}
+      - {x: -0.0038461538, y: -0.8423077}
+      - {x: -0.0038461538, y: -0.85}
+  m_UseDelaunayMesh: 0
 --- !u!1 &769835966
 GameObject:
   m_ObjectHideFlags: 0
