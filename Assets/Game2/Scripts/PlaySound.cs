@@ -23,11 +23,6 @@ public class PlaySound : MonoBehaviour
         am.Play("Space");
     }
 
-    public void WalkingSound()
-    {
-        am.Play("");
-    }
-
     public void Clicking()
     {
         am.Play("Click");

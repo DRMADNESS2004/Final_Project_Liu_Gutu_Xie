@@ -23,9 +23,12 @@ public class DisplayMenus : MonoBehaviour
 
     public TextMeshProUGUI validation;
 
+    AudioManager am;
+
     // Start is called before the first frame update
     void Start()
     {
+        am=GetComponent<AudioManager>();
         StartMenu();
     }
 
@@ -38,7 +41,7 @@ public class DisplayMenus : MonoBehaviour
             endMenu.SetActive(true);
             totalQuestions.text = $"/{Constants.QUESTIONS.Length - 1}";
             totalScore.text=currentScore.text;
-            
+            am.Play("Space");
         }
     }
 
