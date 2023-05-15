@@ -54,7 +54,7 @@ public class onClick : MonoBehaviour
             transform.right = metor.transform.position - transform.position;
 
             missile.transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z);
-            Debug.Log(collisionScript.isCollided);
+            //Debug.Log(collisionScript.isCollided);
 
             if (Input.GetKeyDown(KeyCode.K))
             {
