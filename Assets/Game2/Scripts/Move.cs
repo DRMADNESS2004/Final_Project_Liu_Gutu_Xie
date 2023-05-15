@@ -4,43 +4,63 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    private Animator anim;
+    // Start is called before the first frame update
 
-    //sprint/run mode *OPTIONAL*
+    Animator ani;
+    Rigidbody2D rb2d;
+
     [SerializeField]
-    private float RunSpeed = 2f;
+    private int speed = 10;
+
+    [SerializeField]
+    private GameObject objTrigger;
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        ani = GetComponent<Animator>();
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //arrow keys
-        float input_x = Input.GetAxisRaw("Horizontal");
-        float input_y = Input.GetAxisRaw("Vertical");
+        ani.speed = 1;
+        float val_x = Input.GetAxis("Horizontal");
+        float val_y = Input.GetAxis("Vertical");
 
-        //if player touches a direction, it will increase one of the inputs therefor making isWalking > 0.
-        bool isWalking = (Mathf.Abs(input_x) + Mathf.Abs(input_y)) > 0;
+        objTrigger.GetComponent<Rigidbody2D>().position = rb2d.position;
 
-        //make the Transition bool true to make animation start.
-        anim.SetBool("is_walking", isWalking);
-
-        if (isWalking) //don't need to put == true since its == true by default
+        if (val_x < 0 && rb2d.position.x <= Constants.LBORDER)
         {
-            anim.SetFloat("position_x", input_x); //arrow key value (0 or 1)
-            anim.SetFloat("position_y", input_y); // ^^^^^
-
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                transform.position += new Vector3(input_x, input_y, 0).normalized * Time.deltaTime * RunSpeed; //Normalized makes it 1 or 0, the time.deltaTime makes it work the frames, and RunSpeed to make your character sprint.
-            }
-            else
-            {
-                transform.position += new Vector3(input_x, input_y, 0).normalized * Time.deltaTime;
-            }
+            ani.SetInteger("direction", (int)MoveDirection.LEFT);
         }
+        else if (val_x > 0 && rb2d.position.x >= Constants.RBORDER)
+        {
+            ani.SetInteger("direction", (int)MoveDirection.RIGHT);
+        }
+        else if (val_y < 0&& rb2d.position.y <= Constants.BBORDER)
+        {
+            ani.SetInteger("direction", (int)MoveDirection.DOWN);
+        }
+        else if (val_y > 0&& rb2d.position.y >= Constants.TBORDER)
+        {
+            ani.SetInteger("direction", (int)MoveDirection.UP);
+        }
+        else
+        {
+            ani.speed = 0;
+        }
+
+        Vector2 move = new Vector2(val_x, val_y);
+        rb2d.MovePosition(rb2d.position + (move * 10 * Time.deltaTime));
     }
+}
+
+public enum MoveDirection
+{
+    NONE = 0,
+    UP = 1,
+    DOWN = 2,
+    LEFT = 3,
+    RIGHT = 4,
 }
