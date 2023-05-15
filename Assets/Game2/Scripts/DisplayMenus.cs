@@ -35,7 +35,7 @@ public class DisplayMenus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Constants.QUESTIONNUM == 2/*Constants.QUESTIONS.Length - 1*/)
+        if (Constants.QUESTIONNUM == Constants.QUESTIONS.Length - 1)
         {
             Time.timeScale = 0;
             endMenu.SetActive(true);
@@ -53,6 +53,7 @@ public class DisplayMenus : MonoBehaviour
         validation.text = "";
         Constants.QUESTIONNUM = 0;
         Constants.NEWQUESTION = true;
+        am.Stop("Space");
     }
 
     public void MainMenu()
@@ -66,6 +67,7 @@ public class DisplayMenus : MonoBehaviour
         {
             Time.timeScale = 0;
             startMenu.SetActive(true);
+            am.Play("Space");
         }
     }
 
@@ -76,5 +78,6 @@ public class DisplayMenus : MonoBehaviour
         currentScore.text = "0";
         validation.text = "";
         Constants.QUESTIONNUM = 0;
+        am.Stop("Space");
     }
 }

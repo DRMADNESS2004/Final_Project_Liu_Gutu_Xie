@@ -12,9 +12,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private GameObject objTrigger;
 
-    [SerializeField]
-    private float rotationAngle=10f;
-
     void Start()
     {
         playerRb2d= GetComponent<Rigidbody2D>();
