@@ -1,30 +1,28 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TriggerMessage : MonoBehaviour
+public class MazeEndpoint : MonoBehaviour
 {
-    public Canvas messageCanvas;
-    public Text messageText;
-    public string triggerMessage;
-
     private bool triggered = false;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (!triggered && collision.CompareTag("Player"))
         {
+            SceneManager.LoadSceneAsync("Map2");
+
+            //isWon = true;
+            Debug.Log("entered");
             triggered = true;
-            messageText.text = triggerMessage;
-            messageCanvas.gameObject.SetActive(true);
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    void Update()
     {
-        if (triggered && collision.CompareTag("Player"))
-        {
-            triggered = false;
-            messageCanvas.gameObject.SetActive(false);
-        }
+
     }
+
 }
