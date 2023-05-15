@@ -25,6 +25,8 @@ public class DisplayMenus : MonoBehaviour
 
     AudioManager am;
 
+    private bool isplayed = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,11 @@ public class DisplayMenus : MonoBehaviour
             endMenu.SetActive(true);
             totalQuestions.text = $"/{Constants.QUESTIONS.Length - 1}";
             totalScore.text=currentScore.text;
-            am.Play("Space");
+            if (!isplayed)
+            {
+                am.Play("Space");
+                isplayed= true;
+            }
         }
     }
 
@@ -54,6 +60,7 @@ public class DisplayMenus : MonoBehaviour
         Constants.QUESTIONNUM = 0;
         Constants.NEWQUESTION = true;
         am.Stop("Space");
+        isplayed = false;
     }
 
     public void MainMenu()
