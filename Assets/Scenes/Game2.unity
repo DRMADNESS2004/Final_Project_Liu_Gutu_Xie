@@ -1191,11 +1191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1098937404}
-  rotationAngle: 10
-  moveForce: 100
   speed: 10
-  rotationDistance: 1
-  grabbedOnce: 1
 --- !u!58 &308899320
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4631,11 +4627,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 918827152}
-  - component: {fileID: 918827151}
-  - component: {fileID: 918827153}
   - component: {fileID: 918827156}
   - component: {fileID: 918827155}
   - component: {fileID: 918827154}
+  - component: {fileID: 918827158}
+  - component: {fileID: 918827157}
   m_Layer: 0
   m_Name: ScriptHolder
   m_TagString: Untagged
@@ -4643,25 +4639,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &918827151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918827150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5cb06b68ac17043a6c385949f6db9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  question: {fileID: 921177898}
-  option1: {fileID: 2061791379}
-  option2: {fileID: 1341512091}
-  option3: {fileID: 168089705}
-  option1_display: {fileID: 1725423012}
-  option2_display: {fileID: 820937209}
-  option3_display: {fileID: 705729695}
 --- !u!4 &918827152
 Transform:
   m_ObjectHideFlags: 0
@@ -4677,26 +4654,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &918827153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918827150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 016de0f9846647b439e1254862de93bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startMenu: {fileID: 1346216691}
-  endMenu: {fileID: 1592904558}
-  totalScore: {fileID: 1838743461}
-  currentScore: {fileID: 1809177662}
-  totalQuestions: {fileID: 471789719}
-  replay: {fileID: 1395115271}
-  menu: {fileID: 1034525664}
-  validation: {fileID: 79045192}
 --- !u!114 &918827154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4837,6 +4794,45 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &918827157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918827150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016de0f9846647b439e1254862de93bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMenu: {fileID: 1346216691}
+  endMenu: {fileID: 1592904558}
+  totalScore: {fileID: 1838743461}
+  currentScore: {fileID: 1809177662}
+  totalQuestions: {fileID: 471789719}
+  replay: {fileID: 1395115271}
+  menu: {fileID: 1034525664}
+  validation: {fileID: 79045192}
+--- !u!114 &918827158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918827150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5cb06b68ac17043a6c385949f6db9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  question: {fileID: 921177898}
+  option1: {fileID: 2061791379}
+  option2: {fileID: 1341512091}
+  option3: {fileID: 168089705}
+  option1_display: {fileID: 1725423012}
+  option2_display: {fileID: 820937209}
+  option3_display: {fileID: 705729695}
 --- !u!1 &921177895
 GameObject:
   m_ObjectHideFlags: 0
@@ -5259,8 +5255,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 918827153}
-        m_TargetAssemblyTypeName: DisplayEndMenu, Assembly-CSharp
+      - m_Target: {fileID: 918827157}
+        m_TargetAssemblyTypeName: DisplayMenus, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
@@ -5405,7 +5401,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 918827153}
+      - m_Target: {fileID: 918827157}
         m_TargetAssemblyTypeName: DisplayMenus, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -6209,8 +6205,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 918827153}
-        m_TargetAssemblyTypeName: DisplayEndMenu, Assembly-CSharp
+      - m_Target: {fileID: 918827157}
+        m_TargetAssemblyTypeName: DisplayMenus, Assembly-CSharp
         m_MethodName: Replay
         m_Mode: 1
         m_Arguments:
@@ -6379,7 +6375,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556250930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5606043, y: -0.06390398, z: -1.9092547}
+  m_LocalPosition: {x: -3.46, y: 5.5, z: -1.9092547}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

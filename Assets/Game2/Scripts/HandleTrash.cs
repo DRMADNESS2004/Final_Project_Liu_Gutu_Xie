@@ -27,13 +27,27 @@ public class HandleTrash : MonoBehaviour
             {
                 if (Constants.ISGRABBED)
                 {
-                    trashRb2d.bodyType = RigidbodyType2D.Kinematic;
+                    if (trashRb2d != null) // Check if the object has been destroyed before using it
+                    {
+                        trashRb2d.bodyType = RigidbodyType2D.Kinematic;
+                    }
+                    else
+                    {
+                        Debug.Log("trashrb2d is null");
+                    }
                     Constants.ISGRABBED = false;
                     Debug.Log(Constants.ISGRABBED);
                 }
                 else
-                {   
-                    trashRb2d.bodyType = RigidbodyType2D.Kinematic;
+                {
+                    if (trashRb2d != null) // Check if the object has been destroyed before using it
+                    {
+                        trashRb2d.bodyType = RigidbodyType2D.Kinematic;
+                    }
+                    else
+                    {
+                        Debug.Log("trashrb2d is null");
+                    }
                     Constants.ISGRABBED = true;
                     Debug.Log(Constants.ISGRABBED);
                 }
@@ -41,8 +55,11 @@ public class HandleTrash : MonoBehaviour
         }
         else
         {
-            trashRb2d.bodyType = RigidbodyType2D.Kinematic;
-            trashRb2d.velocity = Vector2.zero;
+            if (trashRb2d != null) // Check if the object has been destroyed before using it
+            {
+                trashRb2d.bodyType = RigidbodyType2D.Kinematic;
+                trashRb2d.velocity = Vector2.zero;
+            }
             Constants.ISGRABBED = false;
         }
     }

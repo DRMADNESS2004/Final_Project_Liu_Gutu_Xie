@@ -13,16 +13,6 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        //check there's only one instance of AudioManager because it's a singleton
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
 
         foreach (Sound s in sounds)
         {

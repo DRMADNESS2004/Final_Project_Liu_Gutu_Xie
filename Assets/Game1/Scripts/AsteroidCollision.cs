@@ -6,8 +6,8 @@ public class AsteroidCollision : MonoBehaviour
 {
     public bool isCollided = false;
 
-    [SerializeField]
-    private GameObject missile;
+    //[SerializeField]
+    //private GameObject missile;
 
     public AudioSource missileHit;
 
@@ -31,16 +31,18 @@ public class AsteroidCollision : MonoBehaviour
         Debug.Log("MissileCollided");
         //isCollided = true;
 
-        
         if (collision.gameObject.tag == "Missile")
         {
             missileHit.Play();
             isCollided = true;
-            oc.ResetMissilePosition();
+
+            if (oc != null)
+            {
+                oc.ResetMissilePosition();
+            }
+
         }
-
     }
-
 
 
     private void OnTriggerExit2D(Collider2D collision)
