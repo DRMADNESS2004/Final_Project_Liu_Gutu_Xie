@@ -38,8 +38,8 @@ static class Constants
 
     public static float LBORDER=-7.67f;
     public static float RBORDER=7.61f;
-    public static float TBORDER=3.58f;
-    public static float BBORDER=-3.56f;
+    public static float TBORDER=4.5f;
+    public static float BBORDER=-3.07f;
 
     public static string MAINSCENENAME = "Lobby";
 }

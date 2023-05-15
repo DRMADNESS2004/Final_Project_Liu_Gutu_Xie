@@ -164,7 +164,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: theprofessor_0
+  m_Name: astronaut_controller
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: direction
@@ -259,7 +259,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: acef1dfe5ea42014aa74f9e5e39546cd, type: 2}
+  m_Motion: {fileID: 7400000, guid: 135388c5afa80834a8611ccf39865d5b, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
