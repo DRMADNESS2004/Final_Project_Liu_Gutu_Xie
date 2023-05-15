@@ -47,7 +47,7 @@ public class VerifyAnswers : MonoBehaviour
                 score.text = totalScore.ToString();
                 Constants.QUESTIONNUM++;
                 Debug.Log(Constants.QUESTIONNUM);
-                am.Play("Lose");
+                am.Play("Win");
                 Constants.NEWQUESTION = true;
             }
             else
@@ -57,7 +57,10 @@ public class VerifyAnswers : MonoBehaviour
                 rb2d.MovePosition(new Vector2(0, 2.12f));
                 Constants.QUESTIONNUM++;
                 Debug.Log(Constants.QUESTIONNUM);
-                am.Play("Lose");
+                if (Constants.QUESTIONNUM < Constants.QUESTIONS.Length - 1)
+                {
+                    am.Play("Lose");
+                }
                 Constants.NEWQUESTION = true; 
             }
         }

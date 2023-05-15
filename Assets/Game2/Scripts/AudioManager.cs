@@ -13,16 +13,6 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        //check there's only one instance of AudioManager because it's a singleton
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
 
         foreach (Sound s in sounds)
         {
@@ -43,6 +33,17 @@ public class AudioManager : MonoBehaviour
         }
 
         s.source.PlayOneShot(s.clip);
+    }
+
+    public void Stop(string soundName)
+    {
+        Sound s = Array.Find(sounds, s => s.name == soundName);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + soundName + " not found!");
+            return;
+        }
+        s.source.Stop();
     }
 
     void Start()

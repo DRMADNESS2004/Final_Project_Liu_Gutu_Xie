@@ -9,24 +9,11 @@ public class TrashMove : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
-    //rotation
-    //private Vector2 rotationPoint;
-
-    [SerializeField]
-    private float rotationAngle=10f;
-
-    [SerializeField]
-    private float moveForce=100f;
-
     [SerializeField]
     private float speed;
 
-    public float rotationDistance = 1f;
-
-    public bool grabbedOnce=true;
-
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb2d= GetComponent<Rigidbody2D>();
         
@@ -38,8 +25,6 @@ public class TrashMove : MonoBehaviour
 
         if (Constants.ISGRABBED)
         {
-            //rotation
-            //rotationPoint = player.GetComponent<Rigidbody2D>().position;
 
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");

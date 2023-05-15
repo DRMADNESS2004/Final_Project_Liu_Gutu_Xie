@@ -26,9 +26,10 @@ public class Movement : MonoBehaviour
             Debug.Log("Attempt to move to the right!");
             }
 
-        var x = Input.GetAxisRaw("Horizontal");
-        var y = Input.GetAxisRaw("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        rb2d.MovePosition(transform.position + new Vector3(x, y) * speed * Time.deltaTime);
+        Vector2 movement = new Vector2(horizontal, vertical);
+        rb2d.velocity = movement * speed;
     }
 }

@@ -4,55 +4,43 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    [SerializeField]
-    private float downBorder;
+    private Animator anim;
 
+    //sprint/run mode *OPTIONAL*
     [SerializeField]
-    private float leftBorder;
-
-    [SerializeField]
-    private float rightBorder;
-
-    [SerializeField]
-    private float topBorder;
-
-    Rigidbody2D rb2d;
-
-    [SerializeField]
-    private int speed=10;
+    private float RunSpeed = 2f;
 
     void Start()
     {
-        rb2d= GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float horizontal;
-        float vertical;
+        //arrow keys
+        float input_x = Input.GetAxisRaw("Horizontal");
+        float input_y = Input.GetAxisRaw("Vertical");
 
-        if (rb2d.position.x >= leftBorder && rb2d.position.x <= rightBorder)
-        {
-            horizontal = Input.GetAxis("Horizontal");
-        }
-        else
-        {
-            horizontal = 0f;
-            rb2d.velocity = new Vector2(horizontal, rb2d.velocity.y);
-        }
-        if (rb2d.position.y >= downBorder && rb2d.position.y <= topBorder)
-        {
-            vertical = Input.GetAxis("Vertical");
-        }
-        else
-        {
-            vertical = 0f;
-            rb2d.velocity = new Vector2(rb2d.velocity.x, vertical);
-        }
+        //if player touches a direction, it will increase one of the inputs therefor making isWalking > 0.
+        bool isWalking = (Mathf.Abs(input_x) + Mathf.Abs(input_y)) > 0;
 
-        Vector2 movement = new Vector2(horizontal, vertical);
-        rb2d.velocity = movement * speed * Time.deltaTime;
+        //make the Transition bool true to make animation start.
+        anim.SetBool("is_walking", isWalking);
+
+        if (isWalking) //don't need to put == true since its == true by default
+        {
+            anim.SetFloat("position_x", input_x); //arrow key value (0 or 1)
+            anim.SetFloat("position_y", input_y); // ^^^^^
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                transform.position += new Vector3(input_x, input_y, 0).normalized * Time.deltaTime * RunSpeed; //Normalized makes it 1 or 0, the time.deltaTime makes it work the frames, and RunSpeed to make your character sprint.
+            }
+            else
+            {
+                transform.position += new Vector3(input_x, input_y, 0).normalized * Time.deltaTime;
+            }
+        }
     }
-
 }
