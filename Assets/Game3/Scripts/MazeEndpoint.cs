@@ -1,35 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MazeEndpoint : MonoBehaviour
+public class TriggerMessage : MonoBehaviour
 {
+    public Canvas messageCanvas;
+    public Text messageText;
+    public string triggerMessage;
 
-    public Canvas messageBoxCanvas;
-    public string messageText;
+    private bool triggered = false;
 
-    private Text messageTextComponent;
-
-    void Start()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        messageTextComponent = messageBoxCanvas.GetComponentInChildren<Text>();
-        messageBoxCanvas.enabled = false;
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
+        if (!triggered && collision.CompareTag("Player"))
         {
-            messageTextComponent.text = messageText;
-            messageBoxCanvas.enabled = true;
+            triggered = true;
+            messageText.text = triggerMessage;
+            messageCanvas.gameObject.SetActive(true);
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (triggered && collision.CompareTag("Player"))
         {
-            messageBoxCanvas.enabled = false;
+            triggered = false;
+            messageCanvas.gameObject.SetActive(false);
         }
     }
 }
