@@ -30,19 +30,19 @@ public class Move : MonoBehaviour
 
         objTrigger.GetComponent<Rigidbody2D>().position = rb2d.position;
 
-        if (val_x < 0 && rb2d.position.x <= Constants.LBORDER)
+        if (val_x < 0 && rb2d.position.x >= Constants.LBORDER)
         {
             ani.SetInteger("direction", (int)MoveDirection.LEFT);
         }
-        else if (val_x > 0 && rb2d.position.x >= Constants.RBORDER)
+        else if (val_x > 0 && rb2d.position.x <= Constants.RBORDER)
         {
             ani.SetInteger("direction", (int)MoveDirection.RIGHT);
         }
-        else if (val_y < 0&& rb2d.position.y <= Constants.BBORDER)
+        else if (val_y < 0&& rb2d.position.y >= Constants.BBORDER)
         {
             ani.SetInteger("direction", (int)MoveDirection.DOWN);
         }
-        else if (val_y > 0&& rb2d.position.y >= Constants.TBORDER)
+        else if (val_y > 0&& rb2d.position.y <= Constants.TBORDER)
         {
             ani.SetInteger("direction", (int)MoveDirection.UP);
         }
